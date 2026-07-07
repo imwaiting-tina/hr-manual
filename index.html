@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HRO 人事员工全生命周期流程</title>
+<style>
+  :root {
+    /* ── 莫兰迪色系（Morandi）── */
+    --recruit:      #9e93ab; --recruit-bg:  #f6f4f8; --recruit-line:  #d3cddb; --recruit-text: #6b6278;
+    --onboard:      #9aaa95; --onboard-bg:  #f4f6f3; --onboard-line:  #cad4c7; --onboard-text: #637060;
+    --active:       #b7a594; --active-bg:   #f7f5f2; --active-line:   #dbd2c9; --active-text: #7a6c5e;
+    --leave:        #bea19d; --leave-bg:    #f8f4f4; --leave-line:    #dfcfcc; --leave-text: #806764;
+    --text:         #3d424a; --muted:#7b828e; --border:#e6e8ec; --white:#fff;
+    --shadow:       0 1px 3px rgba(0,0,0,.03);
+    --divider:      #eaecf0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;background:#f3f2f0;color:var(--text);line-height:1.5}
+
+  /* ── header ── */
+  .header{background:#fff;border-bottom:1px solid var(--border);padding:11px 24px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-radius:10px 10px 0 0}
+  .header h1{font-size:18px;font-weight:700;color:var(--text)}
+  .badge-row{display:flex;gap:7px;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;color:#fff}
+  .badge.r{background:var(--recruit)} .badge.o{background:var(--onboard)}
+  .badge.a{background:var(--active)}  .badge.l{background:var(--leave)}
+  .legend{display:flex;gap:12px;font-size:11px;color:var(--muted);align-items:center;flex-wrap:wrap}
+
+  /* ── table wrapper ── */
+  .wrap{overflow:auto;max-height:100vh;margin:0 16px;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,.05);background:#fff}
+  table{border-collapse:collapse;min-width:1800px;width:100%}
+  col.col-lane{width:44px} col.col-form{width:158px}
+  col.col-r1{width:110px} col.col-r2{width:130px} col.col-r3{width:110px}
+  col.col-r4{width:115px} col.col-r5{width:115px} col.col-r6{width:115px}
+  col.col-r7{width:110px} col.col-r8{width:110px} col.col-r9{width:110px} col.col-r10{width:110px}
+
+  /* ── thead ── */
+  thead th{background:#5c5a5e;color:#fff;font-size:11px;font-weight:600;padding:10px 4px;text-align:center;border-right:1px solid var(--divider);position:sticky;top:51px;z-index:50;white-space:nowrap}
+  thead th.lh{background:#5c5a5e;border-right:none;left:0;z-index:60}
+  thead th.fh{left:44px;z-index:60}
+
+  /* ── lane cell ── */
+  td.lc{text-align:center;vertical-align:middle;border-right:2px solid;font-size:14px;font-weight:700;letter-spacing:3px;line-height:1.4;position:sticky;left:0;z-index:10}
+  td.lc.r{background:var(--recruit-bg);color:var(--recruit-text);border-right-color:var(--recruit-line)}
+  td.lc.o{background:var(--onboard-bg);color:var(--onboard-text);border-right-color:var(--onboard-line)}
+  td.lc.a{background:var(--active-bg);color:var(--active-text);border-right-color:var(--active-line)}
+  td.lc.l{background:var(--leave-bg);color:var(--leave-text);border-right-color:var(--leave-line)}
+  .vtext{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:3px}
+
+  /* ── form cell ── */
+  td.fc{padding:8px 10px;font-size:12px;vertical-align:middle;border-right:1px solid var(--divider);background:#fafbfc;position:sticky;left:44px;z-index:10}
+  td.fc .cat{font-weight:700;color:var(--text);font-size:12px}
+  td.fc .sub{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.55}
+  td.fc .sub em{font-style:normal;background:#f1f3f5;border-radius:3px;padding:0 4px;font-size:9.5px;margin-right:2px}
+  td.fc .tag{display:inline-block;font-size:10px;background:#e9ecf0;color:var(--muted);padding:1px 6px;border-radius:99px;margin-top:3px;margin-left:4px}
+  td.fc .lv{font-weight:700;color:var(--text);font-size:11px}
+
+  /* ── role cells ── */
+  td.rl{text-align:center;vertical-align:middle;position:relative;padding:5px 6px;border-right:1px solid var(--divider)}
+  td.rl.track::before{content:'';position:absolute;top:50%;left:0;right:0;height:3px;transform:translateY(-50%);border-radius:2px;z-index:0;opacity:.55}
+  .r td.rl.track::before{background:var(--recruit-line)}
+  .o td.rl.track::before{background:var(--onboard-line)}
+  .a td.rl.track::before{background:var(--active-line)}
+  .l td.rl.track::before{background:var(--leave-line)}
+
+  /* ── node box ── */
+  .nd{display:inline-block;position:relative;z-index:2;padding:7px 10px;border-radius:6px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);min-width:68px;max-width:108px}
+  .nd small{display:block;font-size:10px;font-weight:400;opacity:.88;margin-top:1px}
+  .nd em{display:block;font-size:9px;font-weight:400;opacity:.78;margin-top:1px;font-style:normal}
+  .r .nd{background:var(--recruit)}
+  .o .nd{background:var(--onboard)}
+  .a .nd{background:var(--active)}
+  .l .nd{background:var(--leave)}
+
+  /* clickable node */
+  .nd.nd-clk{cursor:pointer;padding-right:18px;transition:transform .12s,box-shadow .12s}
+  .nd.nd-clk:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.14)}
+  .nd.nd-clk::after{content:'⋯';position:absolute;right:4px;top:2px;font-size:10px;font-weight:700;opacity:.7;line-height:1}
+
+  /* ── right arrow ── */
+  .nd.ar-right::before{content:'';position:absolute;right:-9px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-width:7px;z-index:3}
+  .r .nd.ar-right::before{border-left-color:var(--recruit)}
+  .o .nd.ar-right::before{border-left-color:var(--onboard)}
+  .a .nd.ar-right::before{border-left-color:var(--active)}
+  .l .nd.ar-right::before{border-left-color:var(--leave)}
+
+  /* ── left arrow ── */
+  .nd.ar-left::after{content:'';position:absolute;left:-9px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-right-width:7px;z-index:3}
+  .r .nd.ar-left::after{border-right-color:var(--recruit)}
+  .o .nd.ar-left::after{border-right-color:var(--onboard)}
+  .a .nd.ar-left::after{border-right-color:var(--active)}
+  .l .nd.ar-left::after{border-right-color:var(--leave)}
+
+  /* ── stack ── */
+  td.rl .nstack{display:flex;flex-direction:column;gap:4px;align-items:center}
+  td.rl .nstack .nd{min-width:72px;max-width:106px;font-size:10.5px}
+
+  /* ── note ── */
+  td.nt{padding:5px 10px;font-size:10px;color:var(--muted);background:#fbfaf9;border-right:1px solid var(--divider);text-align:left}
+  td.ntf{padding:5px 14px;font-size:10px;color:var(--muted);background:#fbfaf9;text-align:left}
+
+  tbody tr:hover td{filter:brightness(0.98)}
+  .foot-note{padding:12px 20px;font-size:11px;color:var(--muted);text-align:center;border-top:1px solid var(--border);line-height:1.7}
+
+  /* ═══════════ Modal / Popup ═══════════ */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.30);z-index:999;align-items:center;justify-content:center}
+  .modal-overlay.show{display:flex}
+  .modal-box{background:#fff;border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,.15);max-width:520px;width:90%;max-height:75vh;overflow-y:auto;padding:0}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#fff;border-radius:12px 12px 0 0;z-index:1}
+  .modal-head h3{font-size:15px;font-weight:700;color:var(--text)}
+  .modal-close{cursor:pointer;width:30px;height:30px;border:none;background:#f1f3f5;border-radius:50%;font-size:16px;line-height:30px;text-align:center;color:var(--muted);transition:background .15s}
+  .modal-close:hover{background:#e2e5e9}
+  .modal-body{padding:14px 20px 20px}
+  .modal-body ul{margin:0;padding-left:16px;list-style:disc}
+  .modal-body li{font-size:13px;color:var(--text);line-height:1.9}
+  .modal-body .m-sub{font-size:11px;color:var(--muted);margin-top:1px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<div class="header">
+  <h1>📋 HRO 人事员工全生命周期流程</h1>
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <div class="badge-row">
+      <span class="badge r">招聘</span><span class="badge o">入职</span>
+      <span class="badge a">在职</span><span class="badge l">离职</span>
+    </div>
+    <div class="legend">
+      <span>━ 流程轨迹线</span><span>▸ 流转方向</span><span>⋯ 点击查看详情</span>
+    </div>
+  </div>
+</div>
+
+<table>
+<colgroup>
+  <col class="col-lane"><col class="col-form">
+  <col class="col-r1"><col class="col-r2"><col class="col-r3">
+  <col class="col-r4"><col class="col-r5"><col class="col-r6">
+  <col class="col-r7"><col class="col-r8"><col class="col-r9"><col class="col-r10">
+</colgroup>
+<thead>
+<tr>
+  <th class="lh"></th><th class="fh">表单</th>
+  <th>求职者<br>/ 员工</th><th>人事专员1<br>人事服务</th><th>人事专员2<br>薪酬结算</th>
+  <th>BU负责人</th><th>人事负责人</th><th>最高负责人</th>
+  <th>物业行政</th><th>IT</th><th>用印人</th><th>财务</th>
+</tr>
+</thead>
+<tbody>
+
+<!-- ═══════════ 一、招聘流程 rowspan=7 ═══════════ -->
+<tr class="r"><td class="lc r" rowspan="7"><span class="vtext">招聘流程</span></td>
+  <td class="fc"><span class="cat">聘用员工申请表</span><span class="tag">HRT-2022</span></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起</div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="r"><td class="fc"><span class="cat">求职申请表</span><span class="tag">HRP-2023</span><div class="sub">P1 基础信息（一面前填写）</div></td>
+  <td class="rl track"><div class="nd">填写P1</div></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="r"><td class="fc"><span class="lv">Ⅰ级面试</span><div class="sub">P2 面试评估</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">一面<small>填P2-1</small></div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">二面<small>完善P2</small></div></td>
+  <td class="rl track"><div class="nd ar-right">终面</div></td>
+  <td class="rl track"><div class="nd">终面<small>出具评价</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="r"><td class="fc"><span class="lv">Ⅱ级面试</span></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">完整面试<small>填写P2</small></div></td>
+  <td class="rl track"><div class="nd ar-right">终面</div></td>
+  <td class="rl track"><div class="nd">终面<small>出具评价</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="r"><td class="fc"><span class="lv">Ⅲ级+面试</span></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">面试</div></td>
+  <td class="rl track"><div class="nd">面试<small>出具评价</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="r"><td class="fc"><span class="cat">录用审批</span>
+  <div class="sub"><em>HRT-2020</em>劳动录用审批单（劳动合同）</div>
+  <div class="sub"><em>HRT-2020</em>劳务录用审批单（劳务协议）</div>
+  <div class="sub"><em>HRT-2020</em>应届生实习录用表（日薪实习）</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="r"><td class="fc"><span class="cat">录用通知书</span><span class="tag">HRT-2020</span></td>
+  <td class="rl track"><div class="nd ar-left">确认接受<small>Offer</small></div></td>
+  <td class="rl track"><div class="nd">发送Offer<small>入职沟通后</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+
+<!-- ═══════════ 二、入职流程 rowspan=5 ═══════════ -->
+<tr class="o"><td class="lc o" rowspan="5"><span class="vtext">入职流程</span></td>
+  <td class="fc"><span class="cat">新员工入职引导表</span><span class="tag">HRT-2026</span>
+    <div class="sub">人事专员1发起，分配至各部门（点击节点 ⋯ 查看详情）</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nstack">
+    <div class="nd nd-clk" data-detail="guide-hr">发起分配任务</div>
+    <div style="font-size:9px;color:var(--onboard);font-weight:600">▼ 分派</div>
+  </div></td>
+  <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="guide-admin">安排工位·电脑<small>发放办公用品</small><em>开通门禁卡</em></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="guide-it">开通企业邮箱<small>HKMS账户+权限</small></div></td>
+  <td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="o"><td class="fc"><span class="cat">员工信息登记表</span><span class="tag">HRT-2020</span>
+  <div class="sub">需提交归档材料（点击节点 ⋯ 查看清单）</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="info-reg">填写信息<small>+ 提交归档材料</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="o"><td class="fc"><span class="cat">合同签署及用印</span>
+  <div class="sub"><em>HRC-2024</em>劳动合同</div>
+  <div class="sub"><em>HRC-2020</em>劳务协议</div>
+  <div class="sub"><em>HRT-2020</em>实习协议</div>
+  <div class="sub"><em>HRC-2024</em>保安人员劳动合同</div></td>
+  <td class="rl track"><div class="nd ar-right">乙方签署</div></td>
+  <td class="rl track"><div class="nd ar-right">发起用印申请</div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">甲方签字<small>确认用印</small></div></td>
+  <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">执行盖章</div></td>
+  <td class="rl"></td>
+</tr>
+<tr class="o"><td class="fc" style="text-align:center;color:var(--muted);font-size:10px">↳ 归档</td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd">文件归档</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="o"><td class="fc"><span class="cat">培训签到表</span><span class="tag">HRT-2020</span></td>
+  <td class="rl track"><div class="nd ar-right">参训人签字</div></td>
+  <td class="rl track"><div class="nd ar-right">组织培训<small>签字确认</small></div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd">最终确认</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+
+<!-- ═══════════ 三、在职管理 rowspan=8 ═══════════ -->
+<tr class="a"><td class="lc a" rowspan="8"><span class="vtext">在职管理</span></td>
+  <td class="fc"><span class="cat">转正流程</span><span class="tag">HRP-2020</span><div class="sub">新员工试用期评估表</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起表单</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">填写试用期评估</div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc"><span class="cat">实习转合同</span><span class="tag">HRP-2023</span><div class="sub">实习生评估表</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起表单</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">填写实习评估</div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc"><span class="cat">调动·晋升·调薪</span><span class="tag">HRP-2020</span><div class="sub">员工流动表</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nstack">
+<div class="nd ar-right">原BU确认</div>
+<div class="nd ar-right">现BU确认<small>如有调入部门</small></div>
+  </div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc"><span class="cat">合同到期续签申请</span>
+  <div class="sub"><em>HRP-2020</em>续签劳动合同申请表</div>
+  <div class="sub"><em>HRP-2026</em>续签劳务协议申请表</div></td>
+  <td class="rl track"><div class="nd ar-right">发起申请</div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc"><span class="cat">续签合同用印</span>
+  <div class="sub"><em>HRC-2020</em>劳动合同续签书</div>
+  <div class="sub"><em>HRC-2025</em>劳务协议续签书</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起用印申请</div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">甲方签字<small>确认用印</small></div></td>
+  <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">执行盖章</div></td>
+  <td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc" style="text-align:center;color:var(--muted);font-size:10px">↳ 归档</td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd">文件归档</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc"><span class="cat">员工福利工作</span>
+  <div class="sub">点击节点 ⋯ 查看福利详情</div></td>
+  <td class="rl"></td>
+  <td class="rl"><div class="nstack"><div class="nd nd-clk" data-detail="welfare-hr">运动卡发放<small>人才公寓申请</small><em>年度体检通知</em></div></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"><div class="nstack"><div class="nd nd-clk" data-detail="welfare-admin">年度节日福利<small>员工生日福利</small></div></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="a"><td class="fc"><span class="cat">薪资发放流程</span></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">汇总月度考勤</div></td>
+  <td class="rl track"><div class="nd ar-right">依据考勤<small>核算工资</small></div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">终审薪资表</div></td>
+  <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd">按时发放</div></td>
+</tr>
+
+<!-- ═══════════ 四、离职流程 rowspan=2 ═══════════ -->
+<tr class="l"><td class="lc l" rowspan="2"><span class="vtext">离职流程</span></td>
+  <td class="fc"><span class="cat">离职申请表</span><span class="tag">HRT-2023</span><div class="sub">双通道发起</div></td>
+  <td class="rl track"><div class="nd ar-right">主动辞职<small>员工个人发起</small></div></td>
+  <td class="rl track"><div class="nd ar-right">发起解雇<small>公司方发起</small></div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+</tr>
+<tr class="l"><td class="fc"><span class="cat">职工离职交接清单</span><span class="tag">HRT-2020</span>
+  <div class="sub">点击各节点 ⋯ 查看完整交接事项</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nstack">
+    <div class="nd nd-clk" data-detail="exit-hr1">发起交接</div>
+    <div class="nd nd-clk" data-detail="exit-hr1" style="font-size:10px">收回档案·联系信息<small>合同解除·福利结算</small><em>社保退工·收回手册</em></div>
+  </div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="exit-hr2">薪资结算</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="exit-bu">文件合同·电子文档<small>在办工作·客户关系</small></div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="exit-admin">注销门禁·归还电脑<small>归还设备·交还钥匙</small><em>交还手机·书籍等</em></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="exit-it">备份邮箱+注销<small>注销HKMS权限</small></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="exit-seal">归还保管<small>授权印章</small></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="exit-fin">应收应付结算<small>预借款结清</small><em>未报销单据</em></div></td>
+</tr>
+
+</tbody>
+</table>
+<div class="foot-note">
+    📌 彩色横线 = 流程轨迹线　|　▸ = 流转方向（右箭头=正向流转，左箭头=回传）　|　<b>带 ⋯ 的节点可点击查看详情弹窗</b>
+</div>
+</div>
+
+<!-- ═══════════ Modal ═══════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modal-title"></h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ── Node detail data ──
+var DETAILS = {
+  'guide-hr': {
+    title: '人事专员1 — 入职引导任务（10项）',
+    items: [
+      '发送录用通知书',
+      '沟通跟踪候选人到岗动态',
+      '收取材料并核验原件',
+      '带领参观办公场地',
+      '介绍同事姓名、岗位',
+      '陪同新员工午餐',
+      '引导加入微信群并修改群昵称',
+      '录入钉钉、配置考勤组',
+      '签订劳动合同 / 录用通知书 / 员工登记表 / 员工手册',
+      '组织新员工培训'
+    ]
+  },
+  'guide-admin': {
+    title: '物业行政部 — 入职引导任务（3项）',
+    items: [
+      '安排工位、电脑',
+      '发放办公用品',
+      '开通门禁卡'
+    ]
+  },
+  'guide-it': {
+    title: 'IT部 — 入职引导任务（2项）',
+    items: [
+      '开通企业邮箱、HKMS账户',
+      '配置权限'
+    ]
+  },
+  'info-reg': {
+    title: '员工信息登记 — 归档材料清单（8项）',
+    items: [
+      '身份证正反面复印件',
+      '银行卡复印件',
+      '户口本户主页+本人页复印件',
+      '上家单位退工单',
+      '学历/学位证书复印件',
+      '学生证',
+      '1个月内体检合格证明',
+      '简历提及及其他资质文件'
+    ]
+  },
+  'welfare-hr': {
+    title: '人事专员1 — 员工福利工作（3项）',
+    items: [
+      '运动卡发放',
+      '人才公寓申请办理',
+      '年度体检通知下发'
+    ]
+  },
+  'welfare-admin': {
+    title: '物业行政部 — 员工福利工作（2项）',
+    items: [
+      '年度节日福利发放',
+      '员工生日福利发放'
+    ]
+  },
+  'exit-hr1': {
+    title: '人事专员1 — 离职交接事项（6项）',
+    items: [
+      '收回公司档案',
+      '登记员工个人联系信息',
+      '办理劳动合同解除/终止手续',
+      '员工福利结算',
+      '通知社保部门办理退工',
+      '收回员工手册'
+    ]
+  },
+  'exit-hr2': {
+    title: '人事专员2 — 离职交接事项（1项）',
+    items: ['薪资结算']
+  },
+  'exit-bu': {
+    title: 'BU负责人 — 离职交接事项（4项）',
+    items: [
+      '书面文件、合同交接',
+      '电子文档移交',
+      '在办工作交接',
+      '客户关系及对接进度移交'
+    ]
+  },
+  'exit-admin': {
+    title: '物业行政部 — 离职交接事项（6项）',
+    items: [
+      '注销门禁权限',
+      '归还电脑及配套设备',
+      '归还各类领用保管设备',
+      '交还门禁卡',
+      '交还办公室/办公桌/储物柜等各类钥匙',
+      '交还公司电话/手机/电话卡/书籍/计算器等物资'
+    ]
+  },
+  'exit-it': {
+    title: 'IT部 — 离职交接事项（2项）',
+    items: [
+      '备份员工邮箱数据并注销邮箱账号',
+      '注销代收代付、HKMS系统账号权限'
+    ]
+  },
+  'exit-seal': {
+    title: '用印人 — 离职交接事项（1项）',
+    items: ['归还公司保管授权印章']
+  },
+  'exit-fin': {
+    title: '财务部 — 离职交接事项（3项）',
+    items: [
+      '应收、应付款项结算',
+      '员工预借款结清',
+      '未报销单据结算'
+    ]
+  }
+};
+
+// ── Modal logic ──
+var modal = document.getElementById('modal');
+var modalTitle = document.getElementById('modal-title');
+var modalBody = document.getElementById('modal-body');
+
+function openModal(key) {
+  var d = DETAILS[key];
+  if (!d) return;
+  modalTitle.textContent = d.title;
+  var html = '<ul>';
+  d.items.forEach(function(item) {
+    html += '<li>' + item + '</li>';
+  });
+  html += '</ul>';
+  modalBody.innerHTML = html;
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// Click on overlay background to close
+modal.addEventListener('click', function(e) {
+  if (e.target === modal) closeModal();
+});
+
+// ESC to close
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+});
+
+// Bind clickable nodes
+document.querySelectorAll('.nd-clk').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var key = el.getAttribute('data-detail');
+    if (key) openModal(key);
+  });
+});
+</script>
+
+</body>
+</html>
