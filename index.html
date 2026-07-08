@@ -104,24 +104,13 @@
   .o td.st .st-tag{border-color:var(--onboard-line);color:var(--onboard-text);background:var(--onboard-bg)}
   .a td.st .st-tag{border-color:var(--active-line);color:var(--active-text);background:var(--active-bg)}
   .l td.st .st-tag{border-color:var(--leave-line);color:var(--leave-text);background:var(--leave-bg)}
-  /* ── status flow arrow (line + arrowhead) ── */
-  td.st.st-ctn .st-tag{position:relative}
-  /* upper line: from tag bottom down */
-  td.st.st-ctn .st-tag::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);width:2px;height:8px;z-index:4;border-radius:1px}
-  /* lower line: cell bottom to next tag top */
-  td.st.st-ctn::before{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:2px;height:10px;z-index:4;border-radius:1px;background:currentColor}
-  /* arrowhead at next tag top */
-  td.st.st-ctn::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top:7px solid;border-bottom:0;z-index:5}
-  /* phase colors — td pseudo-elements inherit via currentColor */
+  /* ── status flow arrow: line + arrowhead ── */
+  td.st.st-ctn::before{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:2px;height:22px;z-index:4;border-radius:1px;background:currentColor}
+  td.st.st-ctn::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top:7px solid;border-bottom:0;z-index:5}
   .r td.st.st-ctn{color:var(--recruit-line)}
   .o td.st.st-ctn{color:var(--onboard-line)}
   .a td.st.st-ctn{color:var(--active-line)}
   .l td.st.st-ctn{color:var(--leave-line)}
-  /* phase colors — tag pseudo-element (explicit, tag has own color) */
-  .r td.st.st-ctn .st-tag::after{background:var(--recruit-line)}
-  .o td.st.st-ctn .st-tag::after{background:var(--onboard-line)}
-  .a td.st.st-ctn .st-tag::after{background:var(--active-line)}
-  .l td.st.st-ctn .st-tag::after{background:var(--leave-line)}
   td.st.st-shared .st-tag{border-style:solid}
 
   /* ── note ── */
