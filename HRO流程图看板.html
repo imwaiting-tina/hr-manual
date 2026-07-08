@@ -54,7 +54,7 @@
   td.fc .cat{font-weight:700;color:var(--text);font-size:12px}
   td.fc .sub{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.55}
   td.fc .sub em{font-style:normal;background:#f1f3f5;border-radius:3px;padding:0 4px;font-size:9.5px;margin-right:2px}
-  td.fc .tag{display:inline-block;font-size:10px;background:#e9ecf0;color:var(--muted);padding:1px 6px;border-radius:99px;margin-top:3px;margin-left:4px}
+  td.fc .tag{display:inline-block;font-size:10px;background:#e9ecf0;color:var(--muted);padding:1px 6px;border-radius:99px;margin-right:5px;vertical-align:middle}
   td.fc .lv{font-weight:700;color:var(--text);font-size:11px}
 
   /* ── role cells ── */
@@ -104,13 +104,11 @@
   .o td.st .st-tag{border-color:var(--onboard-line);color:var(--onboard-text);background:var(--onboard-bg)}
   .a td.st .st-tag{border-color:var(--active-line);color:var(--active-text);background:var(--active-bg)}
   .l td.st .st-tag{border-color:var(--leave-line);color:var(--leave-text);background:var(--leave-bg)}
-  /* downward arrow linking to next row */
   td.st.st-ctn::after{content:'▼';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);font-size:12px;z-index:5;line-height:1}
   .r td.st.st-ctn::after{color:var(--recruit-line)}
   .o td.st.st-ctn::after{color:var(--onboard-line)}
   .a td.st.st-ctn::after{color:var(--active-line)}
   .l td.st.st-ctn::after{color:var(--leave-line)}
-  /* shared status spanning multiple rows (e.g. interview levels) */
   td.st.st-shared .st-tag{border-style:solid}
 
   /* ── note ── */
@@ -172,7 +170,7 @@
 
 <!-- ═══════════ 一、招聘流程 rowspan=7 ═══════════ -->
 <tr class="r"><td class="lc r" rowspan="7"><span class="vtext">招聘流程</span></td>
-  <td class="fc"><span class="cat">聘用员工申请表</span><span class="tag">HRT-2022</span></td>
+  <td class="fc"><span class="tag">HRT-2022</span><span class="cat">聘用员工申请表</span></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl track"><div class="nd ar-right">发起</div></td>
   <td class="rl track"><div class="nd ar-right">确认</div></td>
@@ -180,7 +178,7 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">聘用审批通过</span></td>
 </tr>
-<tr class="r"><td class="fc"><span class="cat">求职申请表</span><span class="tag">HRP-2023</span><div class="sub">P1 基础信息（一面前填写）</div></td>
+<tr class="r"><td class="fc"><span class="tag">HRP-2023</span><span class="cat">求职申请表</span><div class="sub">P1 基础信息（一面前填写）</div></td>
   <td class="rl track"><div class="nd">填写P1</div></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
@@ -204,7 +202,7 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">面试评估完成</span></td>
 </tr>
-<tr class="r"><td class="fc"><span class="lv">Ⅲ+职级的面试</span></td>
+<tr class="r"><td class="fc"><span class="lv">Ⅱ职级+的面试</span></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td>
   <td class="rl track"><div class="nd ar-right">面试</div></td>
@@ -225,7 +223,7 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">录用审批通过</span></td>
 </tr>
-<tr class="r"><td class="fc"><span class="cat">录用通知书</span><span class="tag">HRT-2020</span></td>
+<tr class="r"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">录用通知书</span></td>
   <td class="rl track"><div class="nd ar-left">确认接受<small>Offer</small></div></td>
   <td class="rl track"><div class="nd">发送Offer<small>入职沟通后</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
@@ -235,7 +233,7 @@
 
 <!-- ═══════════ 二、入职流程 rowspan=5 ═══════════ -->
 <tr class="o"><td class="lc o" rowspan="5"><span class="vtext">入职流程</span></td>
-  <td class="fc"><span class="cat">新员工入职引导表</span><span class="tag">HRT-2026</span>
+  <td class="fc"><span class="tag">HRT-2026</span><span class="cat">新员工入职引导表</span>
     <div class="sub">人事专员1发起，分配至各部门（点击节点 ⋯ 查看详情）</div></td>
   <td class="rl"></td>
   <td class="rl track"><div class="nstack">
@@ -248,7 +246,7 @@
   <td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">入职任务分配完成</span></td>
 </tr>
-<tr class="o"><td class="fc"><span class="cat">员工信息登记表</span><span class="tag">HRT-2020</span>
+<tr class="o"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">员工信息登记表</span>
   <div class="sub">需提交归档材料（点击节点 ⋯ 查看清单）</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="info-reg">填写信息<small>+ 提交归档材料</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
@@ -276,7 +274,7 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">合同文件归档完成</span></td>
 </tr>
-<tr class="o"><td class="fc"><span class="cat">培训签到表</span><span class="tag">HRT-2020</span></td>
+<tr class="o"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">培训签到表</span></td>
   <td class="rl track"><div class="nd ar-right">参训人签字</div></td>
   <td class="rl track"><div class="nd ar-right">组织培训<small>签字确认</small></div></td>
   <td class="rl track"></td><td class="rl track"></td>
@@ -287,17 +285,7 @@
 
 <!-- ═══════════ 三、在职管理 rowspan=8 ═══════════ -->
 <tr class="a"><td class="lc a" rowspan="8"><span class="vtext">在职管理</span></td>
-  <td class="fc"><span class="cat">转正流程</span><span class="tag">HRP-2020</span><div class="sub">新员工试用期评估表</div></td>
-  <td class="rl"></td>
-  <td class="rl track"><div class="nd ar-right">发起表单</div></td>
-  <td class="rl track"></td>
-  <td class="rl track"><div class="nd ar-right">填写试用期评估</div></td>
-  <td class="rl track"><div class="nd ar-right">确认</div></td>
-  <td class="rl track"><div class="nd">终审</div></td>
-  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">转正审批通过</span></td>
-</tr>
-<tr class="a"><td class="fc"><span class="cat">实习转合同</span><span class="tag">HRP-2023</span><div class="sub">实习生评估表</div></td>
+  <td class="fc"><span class="tag">HRP-2023</span><span class="cat">实习转合同</span><div class="sub">实习生评估表</div></td>
   <td class="rl"></td>
   <td class="rl track"><div class="nd ar-right">发起表单</div></td>
   <td class="rl track"></td>
@@ -307,7 +295,17 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">实习转正完成</span></td>
 </tr>
-<tr class="a"><td class="fc"><span class="cat">调动·晋升·调薪</span><span class="tag">HRP-2020</span><div class="sub">员工流动表</div></td>
+<tr class="a"><td class="fc"><span class="tag">HRP-2020</span><span class="cat">转正流程</span><div class="sub">新员工试用期评估表</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起表单</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">填写试用期评估</div></td>
+  <td class="rl track"><div class="nd ar-right">确认</div></td>
+  <td class="rl track"><div class="nd">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">转正审批通过</span></td>
+</tr>
+<tr class="a"><td class="fc"><span class="tag">HRP-2020</span><span class="cat">调动·晋升·调薪</span><div class="sub">员工流动表</div></td>
   <td class="rl"></td>
   <td class="rl track"><div class="nd ar-right">发起</div></td>
   <td class="rl track"></td>
@@ -372,7 +370,7 @@
 
 <!-- ═══════════ 四、离职流程 rowspan=2 ═══════════ -->
 <tr class="l"><td class="lc l" rowspan="2"><span class="vtext">离职流程</span></td>
-  <td class="fc"><span class="cat">离职申请表</span><span class="tag">HRT-2023</span><div class="sub">双通道发起</div></td>
+  <td class="fc"><span class="tag">HRT-2023</span><span class="cat">离职申请表</span><div class="sub">双通道发起</div></td>
   <td class="rl track"><div class="nd ar-right">主动辞职<small>员工个人发起</small></div></td>
   <td class="rl track"><div class="nd ar-right">发起解雇<small>公司方发起</small></div></td>
   <td class="rl track"></td>
@@ -382,7 +380,7 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">离职审批通过</span></td>
 </tr>
-<tr class="l"><td class="fc"><span class="cat">职工离职交接清单</span><span class="tag">HRT-2020</span>
+<tr class="l"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">职工离职交接清单</span>
   <div class="sub">点击各节点 ⋯ 查看完整交接事项</div></td>
   <td class="rl"></td>
   <td class="rl track"><div class="nstack">
