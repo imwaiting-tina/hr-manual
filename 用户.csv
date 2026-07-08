@@ -1,0 +1,6 @@
+角色,登录的用户名,登录密码,权限范围
+**super\_admin** (超级管理员),jenny,china-key2026,全部权限，可查看和操作所有模块
+**hr\_master** (HR主管理员),Jason,china-key2026,HR全部权限 + 可设置薪资查看权限
+**hr\_admin** (HR管理员),Tina,china-key2026,日常运营管理，不能设置薪资权限
+**bu\_head** (部门负责人),Bu,china-key2026,发布用人需求、面试评价、试用期评估
+**employee** (普通员工),employee,china-key2026,查看个人信息、申请请假/续签/离职

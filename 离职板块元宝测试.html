@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>离职管理 · 人事系统 MVP</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Nav -->
+  <nav class="bg-white shadow">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <span class="font-bold text-blue-600">HRMS</span>
+      <div class="space-x-4 text-sm">
+        <a href="#home" class="hover:text-blue-600">首页</a>
+        <a href="#form" class="hover:text-blue-600">离职申请</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-bold mb-3">离职管理流程（MVP 原型）</h1>
+    <p class="text-gray-500 mb-6">员工自助发起 → 审批交接 → 结算闭环</p>
+    <a href="#form"
+      class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">
+      发起离职申请
+    </a>
+  </section>
+
+  <!-- Form -->
+  <section id="form" class="max-w-6xl mx-auto px-4 pb-20">
+    <div class="bg-white p-6 rounded-xl shadow max-w-2xl">
+      <h2 class="text-xl font-semibold mb-4">离职申请表（员工主动离职）</h2>
+
+      <form id="form" class="grid gap-4" onsubmit="return handleSubmit(event)">
+        <div>
+          <label class="block text-sm font-medium">姓名 *</label>
+          <input name="name" required class="mt-1 w-full border rounded px-3 py-2" />
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium">工号 *</label>
+            <input name="empId" required class="mt-1 w-full border rounded px-3 py-2" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">部门 *</label>
+            <select name="dept" required class="mt-1 w-full border rounded px-3 py-2">
+              <option value="">请选择</option>
+              <option>研发</option><option>产品</option><option>人事</option><option>财务</option><option>其他</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">预计最后工作日 *</label>
+          <input name="lwd" type="date" required class="mt-1 w-full border rounded px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">离职原因 *</label>
+          <select name="reason" required class="mt-1 w-full border rounded px-3 py-2">
+            <option value="">请选择</option>
+            <option>个人原因</option>
+            <option>薪酬福利</option>
+            <option>发展空间</option>
+            <option> relocated 搬迁</option>
+            <option>其他</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">备注</label>
+          <textarea name="note" rows="3" class="mt-1 w-full border rounded px-3 py-2"></textarea>
+        </div>
+
+        <button type="submit" class="justify-self-start bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+          提交申请
+        </button>
+      </form>
+
+      <p id="msg" class="mt-4 text-green-600 font-medium hidden"></p>
+    </div>
+  </section>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const f = e.target;
+  const lwd = new Date(f.lwd.value);
+  const today = new Date(); today.setHours(0,0,0,0);
+  if (lwd < today) { alert('最后工作日不能早于今天'); return false; }
+
+  // 这里只是前端演示：你后面把这一行换成 fetch('/api/offboarding', {...})
+  console.log('submit', {
+    name: f.name.value,
+    empId: f.empId.value,
+    dept: f.dept.value,
+    lwd: f.lwd.value,
+    reason: f.reason.value,
+    note: f.note.value,
+    submittedAt: new Date().toISOString()
+  });
+
+  document.getElementById('msg').textContent = '✅ 申请已提交（演示：数据已在控制台）';
+  document.getElementById('msg').classList.remove('hidden');
+  f.reset();
+  return false;
+}
+</script>
+</body>
+</html>

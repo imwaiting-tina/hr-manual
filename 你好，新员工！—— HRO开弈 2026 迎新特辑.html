@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://imwaiting-tina.github.io/hro-hr/welcome.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>你好，新员工！—— HRO开弈 2026 迎新特辑</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+  color: #333;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 微信图文容器 ── */
+.page {
+  max-width: 677px;
+  margin: 0 auto;
+  padding: 0;
+  background: #fff;
+}
+
+/* ═══════════ 封面区 ═══════════ */
+.cover {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 25%, #c0392b 50%, #8b1a1a 75%, #2a2a2a 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(192,57,43,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(120,120,120,0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+.cover-inner {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  z-index: 1;
+}
+.cover-subtitle {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.cover-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 4px;
+  line-height: 1.4;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+}
+.cover-title .hl {
+  color: #e8a0a0;
+}
+.cover-line {
+  width: 50px;
+  height: 3px;
+  background: #c0392b;
+  margin: 20px auto;
+  border-radius: 2px;
+}
+.cover-company {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 4px;
+}
+
+/* ── 装饰飘带 ── */
+.ribbon-deco {
+  width: 100%;
+  height: 10px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #c0392b 0px, #c0392b 20px,
+    #555 20px, #555 30px,
+    #c0392b 30px, #c0392b 50px
+  );
+}
+
+/* ═══════════ 引导语区 ═══════════ */
+.intro-section {
+  padding: 40px 28px 20px;
+  text-align: center;
+}
+.intro-section .verse {
+  font-size: 16px;
+  color: #888;
+  line-height: 2.2;
+  letter-spacing: 2px;
+}
+.intro-section .verse em {
+  font-style: normal;
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* ── 分隔装饰 ── */
+.divider {
+  text-align: center;
+  padding: 10px 0 30px;
+}
+.divider span {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: #ddd;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.divider .icon {
+  display: inline-block;
+  font-size: 14px;
+  color: #c0392b;
+  vertical-align: middle;
+}
+
+/* ═══════════ 人员卡片 ═══════════ */
+.staff-section {
+  padding: 0 28px 30px;
+}
+.staff-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  margin-bottom: 32px;
+  padding: 40px 24px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.staff-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.card-blue::before { background: linear-gradient(90deg, #2980b9, #3498db, #5dade2); }
+.card-gold::before { background: linear-gradient(90deg, #d4a017, #f0c040, #f7dc6f); }
+.card-purple::before { background: linear-gradient(90deg, #7d3c98, #a569bd, #d2b4de); }
+
+/* 序号角标 */
+.staff-card .badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 11px;
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+/* 照片区 */
+.photo-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #bbb;
+  letter-spacing: 2px;
+  border: 2px dashed #e0e0e0;
+  background: #fafafa;
+}
+.card-blue .photo-placeholder { border-color: #aed6f1; background: #ebf5fb; color: #85c1e9; }
+.card-gold .photo-placeholder { border-color: #f9e79f; background: #fef9e7; color: #d4ac0d; }
+.card-purple .photo-placeholder { border-color: #d2b4de; background: #f4ecf7; color: #a569bd; }
+
+/* 姓名 */
+.staff-card .name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+.card-blue .name { color: #2471a3; }
+.card-gold .name { color: #b7950b; }
+.card-purple .name { color: #7d3c98; }
+
+/* 一句话人设 */
+.staff-card .tagline {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+/* 信息标签行 */
+.staff-card .info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.staff-card .info-tag {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.card-blue .info-tag { background: #d6eaf8; color: #2471a3; }
+.card-gold .info-tag { background: #fef9e7; color: #b7950b; }
+.card-purple .info-tag { background: #f4ecf7; color: #7d3c98; }
+
+/* 详细描述 */
+.staff-card .desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.9;
+  text-align: left;
+  padding: 0 4px;
+}
+.staff-card .desc .label {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 2px;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+.staff-card .desc .label:first-child { margin-top: 0; }
+
+.staff-card .desc .item {
+  padding: 4px 0;
+  position: relative;
+  padding-left: 16px;
+}
+.staff-card .desc .item::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  font-weight: bold;
+}
+.card-blue .desc .item::before { color: #3498db; }
+.card-gold .desc .item::before { color: #d4a017; }
+.card-purple .desc .item::before { color: #a569bd; }
+
+/* ═══════════ 结语区 ═══════════ */
+.outro-section {
+  padding: 40px 28px 50px;
+  text-align: center;
+}
+.outro-section .big-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #c0392b;
+  letter-spacing: 4px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.outro-section .small-text {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+/* ═══════════ 底部 END ═══════════ */
+.footer-end {
+  text-align: center;
+  padding: 20px 0 30px;
+  font-size: 12px;
+  color: #ccc;
+  letter-spacing: 4px;
+}
+.footer-end .line {
+  width: 30px;
+  height: 1px;
+  background: #eee;
+  margin: 0 auto 12px;
+}
+
+/* ── 响应式微调 ── */
+@media (max-width: 480px) {
+  .cover-title { font-size: 28px; }
+  .staff-card { padding: 32px 16px 24px; }
+  .photo-placeholder { width: 80px; height: 80px; }
+  .staff-card .name { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════ 封面 ══════ -->
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-subtitle">✦ HRO开弈 ✦</div>
+      <div class="cover-title">
+        新<span class="hl">锐</span>登场<br>共赴<span class="hl">山海</span>
+      </div>
+      <div class="cover-line"></div>
+      <div style="font-size:20px;color:#fff;letter-spacing:3px;font-weight:600;">你好，新员工！</div>
+      <div class="cover-company" style="margin-top:16px;">2026.06.01 入职</div>
+    </div>
+  </div>
+  <div class="ribbon-deco"></div>
+
+  <!-- ══════ 引导语 ══════ -->
+  <div class="intro-section">
+    <p class="verse">
+      盛夏光年，万物生长<br>
+      三位新锐带着各自的光芒<br>
+      跨越山海而来<br>
+      <em>正式加入 HRO开弈</em><br>
+      从这里开始，书写新的篇章
+    </p>
+  </div>
+
+  <div class="divider">
+    <span></span><span class="icon">✦</span><span></span>
+  </div>
+
+  <!-- ══════ 安子玥 ══════ -->
+  <div class="staff-section">
+    <div class="staff-card card-blue">
+      <div class="badge">01 / 03</div>
+      <div class="photo-placeholder">📷 照片区</div>
+      <div class="name">安子玥</div>
+      <div class="tagline">「代码会过时，但法律让规则永远有效」</div>
+      <div class="info-tags">
+        <span class="info-tag">管培生</span>
+        <span class="info-tag">法务方向</span>
+        <span class="info-tag">上海师范大学 硕士</span>
+        <span class="info-tag">山东政法学院 本科</span>
+      </div>
+      <div class="desc">
+        <div class="label">🎓 学历背景</div>
+        <div class="item">上海师范大学 · 法律（法学）硕士 · 在读（2024–2026）</div>
+        <div class="item">山东政法学院 · 法学本科 · 通过法考 A 证（2020–2024）</div>
+        <div class="label">💼 实习亮点</div>
+        <div class="item"><strong>嘉驰国际 · 法务专员</strong>：日审合同 8-10 份，识别风险点 150+ 个，准确率 95%，协助 IPO 合规整改 25 处</div>
+        <div class="item"><strong>两家律所 · 助理</strong>：撰写法律文书 30+ 份，会见当事人 18 次，案件研讨建议采纳率 60%</div>
+        <div class="label">🏅 资质证书</div>
+        <div class="item">法律职业资格 A 证 · 期货从业资格 · 基金从业资格 · IELTS 6.5</div>
+      </div>
+    </div>
+
+    <!-- ══════ 陈锦 ══════ -->
+    <div class="staff-card card-gold">
+      <div class="badge">02 / 03</div>
+      <div class="photo-placeholder">📷 照片区</div>
+      <div class="name">陈&nbsp;&nbsp;锦</div>
+      <div class="tagline">「广告人懂人心，数据人懂真相——她两者兼备」</div>
+      <div class="info-tags">
+        <span class="info-tag">管培生</span>
+        <span class="info-tag">账务方向</span>
+        <span class="info-tag">复旦大学 本科</span>
+        <span class="info-tag">广告学 + 数据智能辅修</span>
+      </div>
+      <div class="desc">
+        <div class="label">🎓 学历背景</div>
+        <div class="item">复旦大学 · 广告学本科（2022–2026）</div>
+        <div class="item">辅修：数据智能与商业决策</div>
+        <div class="label">🔬 项目亮点</div>
+        <div class="item"><strong>复旦找搭子平台 · 数据库设计</strong>：独立完成需求 → ER 图 → SQL 建表全链路；Hi-Agent 接入大模型实现自然语言转 SQL 智能问答</div>
+        <div class="item"><strong>GLP-1 新药销售反馈 · 数据分析</strong>：2 万+ 用户评论去重清洗 + 大模型打分；计算 Kappa / ICC / MAE 一致性指标</div>
+        <div class="item"><strong>零售关联规则挖掘</strong>：13 万+ 订单 Apriori &amp; FP-Growth 双算法，生成 43 条强关联规则</div>
+        <div class="label">⚡ 核心技能</div>
+        <div class="item">Python · SQL · Pandas · Matplotlib · Deepseek 大模型 · 关联规则挖掘 · 数据库设计</div>
+      </div>
+    </div>
+
+    <!-- ══════ 陈双杰 ══════ -->
+    <div class="staff-card card-purple">
+      <div class="badge">03 / 03</div>
+      <div class="photo-placeholder">📷 照片区</div>
+      <div class="name">陈双杰</div>
+      <div class="tagline">「用数据看穿数字背后的故事」</div>
+      <div class="info-tags">
+        <span class="info-tag">管培生</span>
+        <span class="info-tag">账务方向</span>
+        <span class="info-tag">上海海事大学 本科</span>
+        <span class="info-tag">大数据管理与应用</span>
+      </div>
+      <div class="desc">
+        <div class="label">🎓 学历背景</div>
+        <div class="item">上海海事大学 · 大数据管理与应用本科（2022–2026）</div>
+        <div class="item">GPA 3.61 / 4.0 · 专业前 16% · 上海市优秀毕业生 · 特等奖学金 · CET-6</div>
+        <div class="label">💼 实习亮点</div>
+        <div class="item"><strong>上海临港新科园 · 数据挖掘实习生</strong>：利用算法模型精准定位目标企业画像，大幅降低园区获客成本，提升招商转化效率</div>
+        <div class="item"><strong>电商客户行为分析项目</strong>：AUC-ROC 0.89 的订阅预测模型，K-means 四大客群聚类，应用抖音 / 小红书实现盈利</div>
+        <div class="label">⚡ 核心技能</div>
+        <div class="item">Python · Pandas · Scikit-learn · SQL · Excel 高级 · R 语言</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ 结语 ══════ -->
+  <div class="outro-section">
+    <div class="big-text">
+      青春筑梦正当时<br>不负韶华不负己
+    </div>
+    <div class="small-text">
+      HRO开弈 热烈欢迎三位新伙伴<br>
+      期待你们在这里绽放光芒 ✨
+    </div>
+  </div>
+
+  <!-- ══════ END ══════ -->
+  <div class="footer-end">
+    <div class="line"></div>
+    END
+  </div>
+
+</div>
+
+
+
+</body></html>

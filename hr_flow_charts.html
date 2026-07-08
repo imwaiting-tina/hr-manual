@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HR系统流程图 — 招聘与入职管理</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
+    background: #f7f7f5;
+    color: #2c2c2a;
+    padding: 32px 24px;
+  }
+  .doc-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #2c2c2a;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .doc-subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #5f5e5a;
+    margin-bottom: 40px;
+  }
+  .section {
+    background: #fff;
+    border: 0.5px solid #ddd;
+    border-radius: 12px;
+    padding: 28px 24px 32px;
+    margin-bottom: 32px;
+    page-break-inside: avoid;
+  }
+  .section-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2c2c2a;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid #e5e5e5;
+  }
+  .section-num {
+    display: inline-block;
+    background: #185FA5;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #888780;
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 0.5px solid #e5e5e5;
+  }
+  @media print {
+    body { background: #fff; padding: 16px; }
+    .section { page-break-inside: avoid; border: 0.5px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-title">HR 系统流程图</div>
+<div class="doc-subtitle">招聘管理 · 入职准备 · 入职操作 · 员工类型文件清单</div>
+
+<!-- ==================== 图1: 招聘管理流程 ==================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">1</span>招聘管理流程</div>
+  <svg viewBox="0 0 680 920" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <marker id="arr1r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <!-- 图例 -->
+    <rect x="40" y="30" width="12" height="12" rx="2" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="58" y="41">面试环节</text>
+    <rect x="40" y="52" width="12" height="12" rx="2" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="58" y="63">录用环节</text>
+    <polygon points="46,74 56,80 46,86 36,80" fill="#FFF8E6" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="62" y="83">判断节点</text>
+    <rect x="40" y="96" width="12" height="12" rx="2" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="58" y="107">淘汰</text>
+
+    <!-- Step 1: 收取简历 -->
+    <rect x="230" y="30" width="220" height="44" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="52" text-anchor="middle" dominant-baseline="central">收取简历</text>
+    <line x1="340" y1="74" x2="340" y2="100" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- Step 2: 简历初筛 -->
+    <rect x="230" y="100" width="220" height="44" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="122" text-anchor="middle" dominant-baseline="central">简历初筛</text>
+    <line x1="340" y1="144" x2="340" y2="170" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- Step 3: HR一面 -->
+    <rect x="200" y="170" width="280" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="190" text-anchor="middle" dominant-baseline="central">HR 一面</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="210" text-anchor="middle" dominant-baseline="central">基本信息核对 · 评估留用可能性</text>
+    <line x1="340" y1="226" x2="340" y2="256" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- 一面判断 -->
+    <polygon points="340,256 388,280 340,304 292,280" fill="#FFF8E6" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="340" y="280" text-anchor="middle" dominant-baseline="central">一面通过？</text>
+    <line x1="340" y1="304" x2="340" y2="330" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="352" y="320">通过</text>
+    <line x1="388" y1="280" x2="576" y2="280" stroke="#888780" stroke-width="1" marker-end="url(#arr1r)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="430" y="274">不通过</text>
+    <rect x="576" y="258" width="64" height="44" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#A32D2D" x="608" y="280" text-anchor="middle" dominant-baseline="central">淘汰</text>
+
+    <!-- Step 4: 用人部门二面 -->
+    <rect x="180" y="330" width="320" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="350" text-anchor="middle" dominant-baseline="central">用人部门二面</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="368" text-anchor="middle" dominant-baseline="central">部门负责人面试评估</text>
+    <line x1="340" y1="386" x2="340" y2="416" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- 二面判断 -->
+    <polygon points="340,416 388,440 340,464 292,440" fill="#FFF8E6" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="340" y="440" text-anchor="middle" dominant-baseline="central">二面通过？</text>
+    <line x1="340" y1="464" x2="340" y2="490" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="352" y="480">通过</text>
+    <line x1="388" y1="440" x2="576" y2="440" stroke="#888780" stroke-width="1" marker-end="url(#arr1r)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="430" y="434">不通过</text>
+    <rect x="576" y="418" width="64" height="44" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#A32D2D" x="608" y="440" text-anchor="middle" dominant-baseline="central">淘汰</text>
+
+    <!-- Step 5: 董事会终面 -->
+    <rect x="160" y="490" width="360" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="510" text-anchor="middle" dominant-baseline="central">董事会终面</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="528" text-anchor="middle" dominant-baseline="central">求职申请表 · 面试评估表（面试官填写）</text>
+    <line x1="340" y1="546" x2="340" y2="576" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- 终面判断 -->
+    <polygon points="340,576 388,600 340,624 292,600" fill="#FFF8E6" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="340" y="600" text-anchor="middle" dominant-baseline="central">综合评估通过？</text>
+    <line x1="340" y1="624" x2="340" y2="650" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="352" y="640">通过</text>
+    <line x1="388" y1="600" x2="576" y2="600" stroke="#888780" stroke-width="1" marker-end="url(#arr1r)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="430" y="594">不通过</text>
+    <rect x="576" y="578" width="64" height="44" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#A32D2D" x="608" y="600" text-anchor="middle" dominant-baseline="central">淘汰</text>
+
+    <!-- Step 6: 入职事项沟通 -->
+    <rect x="210" y="650" width="260" height="44" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="672" text-anchor="middle" dominant-baseline="central">入职事项沟通</text>
+    <line x1="340" y1="694" x2="340" y2="720" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- Step 7: 发送Offer -->
+    <rect x="210" y="720" width="260" height="44" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="742" text-anchor="middle" dominant-baseline="central">发送 Offer</text>
+    <line x1="340" y1="764" x2="340" y2="790" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+
+    <!-- Step 8: 确认接受 -->
+    <polygon points="340,790 388,814 340,838 292,814" fill="#FFF8E6" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="340" y="814" text-anchor="middle" dominant-baseline="central">确认接受？</text>
+    <line x1="340" y1="838" x2="340" y2="864" stroke="#888780" stroke-width="1" marker-end="url(#arr1)"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="352" y="854">接受</text>
+
+    <!-- Step 9: 准备入职 -->
+    <rect x="210" y="864" width="260" height="44" rx="8" fill="#EAF3DE" stroke="#0F6E56" stroke-width="1"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="886" text-anchor="middle" dominant-baseline="central">准备入职事项</text>
+  </svg>
+</div>
+
+<!-- ==================== 图2: 入职准备事项 ==================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">2</span>入职准备事项（行政 / IT 并行）</div>
+  <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <rect x="230" y="24" width="220" height="44" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="46" text-anchor="middle" dominant-baseline="central">Offer 已确认接受</text>
+    <line x1="340" y1="68" x2="340" y2="88" stroke="#888780" stroke-width="1"/>
+    <line x1="100" y1="88" x2="580" y2="88" stroke="#888780" stroke-width="0.5"/>
+    <line x1="100" y1="88" x2="100" y2="116" stroke="#888780" stroke-width="0.5" marker-end="url(#arr2)"/>
+    <line x1="220" y1="88" x2="220" y2="116" stroke="#888780" stroke-width="0.5" marker-end="url(#arr2)"/>
+    <line x1="340" y1="88" x2="340" y2="116" stroke="#888780" stroke-width="0.5" marker-end="url(#arr2)"/>
+    <line x1="460" y1="88" x2="460" y2="116" stroke="#888780" stroke-width="0.5" marker-end="url(#arr2)"/>
+    <line x1="580" y1="88" x2="580" y2="116" stroke="#888780" stroke-width="0.5" marker-end="url(#arr2)"/>
+
+    <rect x="44" y="116" width="112" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="100" y="138" text-anchor="middle" dominant-baseline="central">安排座位</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="158" text-anchor="middle" dominant-baseline="central">&amp; 配备电脑</text>
+
+    <rect x="164" y="116" width="112" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="220" y="138" text-anchor="middle" dominant-baseline="central">开设邮箱</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="220" y="158" text-anchor="middle" dominant-baseline="central">账户权限</text>
+
+    <rect x="284" y="116" width="112" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="340" y="138" text-anchor="middle" dominant-baseline="central">HKMS 系统</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="340" y="158" text-anchor="middle" dominant-baseline="central">账户权限</text>
+
+    <rect x="404" y="116" width="112" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="460" y="138" text-anchor="middle" dominant-baseline="central">准备办公</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="460" y="158" text-anchor="middle" dominant-baseline="central">用品</text>
+
+    <rect x="524" y="116" width="112" height="56" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#2c2c2a" x="580" y="138" text-anchor="middle" dominant-baseline="central">开设门禁卡</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="580" y="158" text-anchor="middle" dominant-baseline="central">物理权限</text>
+
+    <line x1="100" y1="172" x2="100" y2="232" stroke="#888780" stroke-width="0.5"/>
+    <line x1="220" y1="172" x2="220" y2="232" stroke="#888780" stroke-width="0.5"/>
+    <line x1="340" y1="172" x2="340" y2="232" stroke="#888780" stroke-width="0.5"/>
+    <line x1="460" y1="172" x2="460" y2="232" stroke="#888780" stroke-width="0.5"/>
+    <line x1="580" y1="172" x2="580" y2="232" stroke="#888780" stroke-width="0.5"/>
+    <line x1="100" y1="232" x2="580" y2="232" stroke="#888780" stroke-width="0.5"/>
+    <line x1="340" y1="232" x2="340" y2="258" stroke="#888780" stroke-width="0.5" marker-end="url(#arr2)"/>
+
+    <rect x="200" y="258" width="280" height="56" rx="8" fill="#EAF3DE" stroke="#0F6E56" stroke-width="1"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="278" text-anchor="middle" dominant-baseline="central">入职准备完成</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="298" text-anchor="middle" dominant-baseline="central">等待员工入职日报到</text>
+  </svg>
+</div>
+
+<!-- ==================== 图3: 入职管理操作流程 ==================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">3</span>入职管理操作流程（员工报到当天）</div>
+  <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <rect x="190" y="24" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="44" text-anchor="middle" dominant-baseline="central">填写纸质入职文件</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="64" text-anchor="middle" dominant-baseline="central">根据员工类型填写对应文件（见图4）</text>
+    <line x1="340" y1="80" x2="340" y2="106" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+
+    <rect x="190" y="106" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="126" text-anchor="middle" dominant-baseline="central">钉钉添加员工</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="146" text-anchor="middle" dominant-baseline="central">在钉钉后台操作添加新成员</text>
+    <line x1="340" y1="162" x2="340" y2="188" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+
+    <rect x="190" y="188" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="208" text-anchor="middle" dominant-baseline="central">办理入职</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="228" text-anchor="middle" dominant-baseline="central">完成系统录入与入职手续</text>
+    <line x1="340" y1="244" x2="340" y2="270" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+
+    <rect x="190" y="270" width="300" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="290" text-anchor="middle" dominant-baseline="central">加入考勤组</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#5f5e5a" x="340" y="310" text-anchor="middle" dominant-baseline="central">将员工拉入对应考勤分组</text>
+    <line x1="340" y1="326" x2="340" y2="352" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+
+    <rect x="190" y="352" width="300" height="56" rx="8" fill="#EAF3DE" stroke="#0F6E56" stroke-width="1"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="372" text-anchor="middle" dominant-baseline="central">完成第一次打卡</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" fill="#0F6E56" x="340" y="393" text-anchor="middle" dominant-baseline="central">入职流程完成 ✓</text>
+
+    <!-- 步骤编号 -->
+    <circle cx="172" cy="52" r="13" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#185FA5" x="172" y="52" text-anchor="middle" dominant-baseline="central">1</text>
+    <circle cx="172" cy="134" r="13" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#185FA5" x="172" y="134" text-anchor="middle" dominant-baseline="central">2</text>
+    <circle cx="172" cy="216" r="13" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#185FA5" x="172" y="216" text-anchor="middle" dominant-baseline="central">3</text>
+    <circle cx="172" cy="298" r="13" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#185FA5" x="172" y="298" text-anchor="middle" dominant-baseline="central">4</text>
+    <circle cx="172" cy="380" r="13" fill="#EAF3DE" stroke="#0F6E56" stroke-width="1"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12" font-weight="500" fill="#0F6E56" x="172" y="380" text-anchor="middle" dominant-baseline="central">5</text>
+  </svg>
+</div>
+
+<!-- ==================== 图4: 员工类型入职文件 ==================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">4</span>员工类型入职文件清单及后续流程</div>
+  <svg viewBox="0 0 680 780" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <!-- 顶部 -->
+    <rect x="210" y="16" width="260" height="40" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="36" text-anchor="middle" dominant-baseline="central">确认员工类型</text>
+    <line x1="340" y1="56" x2="340" y2="76" stroke="#888780" stroke-width="0.5"/>
+    <line x1="80" y1="76" x2="600" y2="76" stroke="#888780" stroke-width="0.5"/>
+    <line x1="80" y1="76" x2="80" y2="100" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <line x1="253" y1="76" x2="253" y2="100" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <line x1="460" y1="76" x2="460" y2="100" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <line x1="600" y1="76" x2="600" y2="100" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+
+    <!-- 列1: 实习生 -->
+    <rect x="40" y="100" width="120" height="28" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="100" y="114" text-anchor="middle" dominant-baseline="central">实习生（未毕业）</text>
+    <rect x="40" y="140" width="120" height="180" rx="6" fill="#F8F8FE" stroke="#AFA9EC" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="158" text-anchor="middle">新员工入职引导表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="175" text-anchor="middle">录用通知书</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="192" text-anchor="middle">应届生实习录用表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="209" text-anchor="middle">员工信息登记表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="226" text-anchor="middle">实习协议</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="100" y="243" text-anchor="middle">员工手册</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="10" fill="#534AB7" x="100" y="264" text-anchor="middle">▸ 若签三方：纸质三方协议</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="10" fill="#534AB7" x="100" y="280" text-anchor="middle">（毕业后签劳动合同）</text>
+
+    <line x1="100" y1="320" x2="100" y2="346" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="40" y="346" width="120" height="40" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="100" y="360" text-anchor="middle" dominant-baseline="central">实习期结束</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="10" fill="#5f5e5a" x="100" y="376" text-anchor="middle">填写实习生评估表</text>
+    <line x1="100" y1="386" x2="100" y2="408" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <polygon points="100,408 130,424 100,440 70,424" fill="#FFF8E6" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="100" y="424" text-anchor="middle" dominant-baseline="central">是否留用？</text>
+    <line x1="100" y1="440" x2="100" y2="462" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="40" y="462" width="120" height="40" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="100" y="476" text-anchor="middle" dominant-baseline="central">定岗 &amp; 确认转正日期</text>
+
+    <!-- 列2: 正式员工 -->
+    <rect x="193" y="100" width="120" height="28" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="253" y="114" text-anchor="middle" dominant-baseline="central">正式员工（已毕业）</text>
+    <rect x="193" y="140" width="120" height="162" rx="6" fill="#F2FBF7" stroke="#5DCAA5" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="253" y="158" text-anchor="middle">新员工入职引导表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="253" y="175" text-anchor="middle">录用通知书</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="253" y="192" text-anchor="middle">录用审批单</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="253" y="209" text-anchor="middle">员工信息登记表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="253" y="226" text-anchor="middle">劳动合同</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="253" y="243" text-anchor="middle">员工手册</text>
+
+    <line x1="253" y1="302" x2="253" y2="328" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="193" y="328" width="120" height="40" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="253" y="342" text-anchor="middle" dominant-baseline="central">试用期结束当月</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="10" fill="#5f5e5a" x="253" y="358" text-anchor="middle">新员工试用期评估表</text>
+    <line x1="253" y1="368" x2="253" y2="390" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="193" y="390" width="120" height="50" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="253" y="406" text-anchor="middle" dominant-baseline="central">确定转正</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="10" fill="#5f5e5a" x="253" y="422" text-anchor="middle">薪资 &amp; 所属部门</text>
+
+    <!-- 列3: 退休返聘 -->
+    <rect x="400" y="100" width="120" height="28" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="460" y="114" text-anchor="middle" dominant-baseline="central">退休返聘员工</text>
+    <rect x="400" y="140" width="120" height="128" rx="6" fill="#FFFBF2" stroke="#FAC775" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="460" y="158" text-anchor="middle">劳务录用审批单</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="460" y="175" text-anchor="middle">员工信息登记表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="460" y="192" text-anchor="middle">劳务协议</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="460" y="209" text-anchor="middle">员工手册</text>
+    <line x1="460" y1="268" x2="460" y2="290" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="400" y="290" width="120" height="34" rx="6" fill="#FFFBF2" stroke="#FAC775" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#BA7517" x="460" y="307" text-anchor="middle">劳务合同管理</text>
+
+    <!-- 列4: 保安 -->
+    <rect x="540" y="100" width="120" height="28" rx="6" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" x="600" y="114" text-anchor="middle" dominant-baseline="central">保安</text>
+    <rect x="540" y="140" width="120" height="145" rx="6" fill="#FFF5F5" stroke="#F09595" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="600" y="158" text-anchor="middle">录用审批单</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="600" y="175" text-anchor="middle">员工信息登记表</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="600" y="192" text-anchor="middle">劳动合同（保安版）</text>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#5f5e5a" x="600" y="209" text-anchor="middle">员工手册</text>
+    <line x1="600" y1="285" x2="600" y2="307" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="540" y="307" width="120" height="34" rx="6" fill="#FFF5F5" stroke="#F09595" stroke-width="0.5"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="11" fill="#A32D2D" x="600" y="324" text-anchor="middle">合同到期续签管理</text>
+
+    <!-- 汇合底部 -->
+    <line x1="100" y1="502" x2="100" y2="720" stroke="#888780" stroke-width="0.5"/>
+    <line x1="253" y1="440" x2="253" y2="720" stroke="#888780" stroke-width="0.5"/>
+    <line x1="460" y1="324" x2="460" y2="720" stroke="#888780" stroke-width="0.5"/>
+    <line x1="600" y1="341" x2="600" y2="720" stroke="#888780" stroke-width="0.5"/>
+    <line x1="100" y1="720" x2="600" y2="720" stroke="#888780" stroke-width="0.5"/>
+    <line x1="340" y1="720" x2="340" y2="744" stroke="#888780" stroke-width="0.5" marker-end="url(#arr4)"/>
+    <rect x="200" y="744" width="280" height="26" rx="6" fill="#EAF3DE" stroke="#0F6E56" stroke-width="1"/>
+    <text font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" x="340" y="757" text-anchor="middle" dominant-baseline="central">入职档案归档 · 流程结束</text>
+  </svg>
+</div>
+
+<div class="footer">
+  HR 系统流程图 · 招聘与入职管理模块 · 仅供内部参考
+</div>
+
+</body>
+</html>
