@@ -104,13 +104,13 @@
   .o td.st .st-tag{border-color:var(--onboard-line);color:var(--onboard-text);background:var(--onboard-bg)}
   .a td.st .st-tag{border-color:var(--active-line);color:var(--active-text);background:var(--active-bg)}
   .l td.st .st-tag{border-color:var(--leave-line);color:var(--leave-text);background:var(--leave-bg)}
-  /* ── status flow arrow: line + arrowhead ── */
-  td.st.st-ctn::before{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:2px;height:22px;z-index:4;border-radius:1px;background:currentColor}
-  td.st.st-ctn::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top:7px solid;border-bottom:0;z-index:5}
-  .r td.st.st-ctn{color:var(--recruit-line)}
-  .o td.st.st-ctn{color:var(--onboard-line)}
-  .a td.st.st-ctn{color:var(--active-line)}
-  .l td.st.st-ctn{color:var(--leave-line)}
+  /* ── status flow arrow: attached to tag bottom ── */
+  td.st.st-ctn .st-tag{position:relative}
+  td.st.st-ctn .st-tag::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top:7px solid;border-bottom:0;z-index:5}
+  .r td.st.st-ctn .st-tag::after{border-top-color:var(--recruit-line)}
+  .o td.st.st-ctn .st-tag::after{border-top-color:var(--onboard-line)}
+  .a td.st.st-ctn .st-tag::after{border-top-color:var(--active-line)}
+  .l td.st.st-ctn .st-tag::after{border-top-color:var(--leave-line)}
   td.st.st-shared .st-tag{border-style:solid}
 
   /* ── note ── */
@@ -146,7 +146,7 @@
       <span class="badge a">在职</span><span class="badge l">离职</span>
     </div>
     <div class="legend">
-      <span>━ 流程轨迹线</span><span>▸ 流转方向</span><span>⋯ 点击查看详情</span><span>↓ 流程推进</span>
+      <span>━ 流程轨迹线</span><span>▸ 流转方向</span><span>⋯ 点击查看详情</span><span>▼ 流程推进</span>
     </div>
   </div>
 </div>
@@ -402,7 +402,7 @@
 </tbody>
 </table>
 <div class="foot-note">
-    📌 彩色横线 = 流程轨迹线　|　▸ = 流转方向（右箭头=正向流转，左箭头=回传）　|　<b>带 ⋯ 的节点可点击查看详情弹窗</b>　|　↓ 竖线+箭头 = 流程推进至下一阶段
+	📌 彩色横线 = 流程轨迹线　|　▸ = 流转方向（右箭头=正向流转，左箭头=回传）　|　<b>带 ⋯ 的节点可点击查看详情弹窗</b>　|　▼ = 流程推进至下一阶段
 </div>
 </div>
 
