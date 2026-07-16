@@ -11,6 +11,7 @@
     --onboard:      #9aaa95; --onboard-bg:  #f4f6f3; --onboard-line:  #cad4c7; --onboard-text: #637060;
     --active:       #b7a594; --active-bg:   #f7f5f2; --active-line:   #dbd2c9; --active-text: #7a6c5e;
     --leave:        #bea19d; --leave-bg:    #f8f4f4; --leave-line:    #dfcfcc; --leave-text: #806764;
+    --trainee:      #8d9aab; --trainee-bg:  #f4f5f7; --trainee-line:  #d0d6df; --trainee-text: #5a6370;
     --text:         #3d424a; --muted:#7b828e; --border:#e6e8ec; --white:#fff;
     --shadow:       0 1px 3px rgba(0,0,0,.03);
     --divider:      #eaecf0;
@@ -25,6 +26,7 @@
   .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;color:#fff}
   .badge.r{background:var(--recruit)} .badge.o{background:var(--onboard)}
   .badge.a{background:var(--active)}  .badge.l{background:var(--leave)}
+  .badge.t{background:var(--trainee)}
   .legend{display:flex;gap:12px;font-size:11px;color:var(--muted);align-items:center;flex-wrap:wrap}
 
   /* ── table wrapper ── */
@@ -47,6 +49,7 @@
   td.lc.o{background:var(--onboard-bg);color:var(--onboard-text);border-right-color:var(--onboard-line)}
   td.lc.a{background:var(--active-bg);color:var(--active-text);border-right-color:var(--active-line)}
   td.lc.l{background:var(--leave-bg);color:var(--leave-text);border-right-color:var(--leave-line)}
+  td.lc.t{background:var(--trainee-bg);color:var(--trainee-text);border-right-color:var(--trainee-line)}
   .vtext{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:3px}
 
   /* ── form cell ── */
@@ -64,6 +67,7 @@
   .o td.rl.track::before{background:var(--onboard-line)}
   .a td.rl.track::before{background:var(--active-line)}
   .l td.rl.track::before{background:var(--leave-line)}
+  .t td.rl.track::before{background:var(--trainee-line)}
 
   /* ── node box ── */
   .nd{display:inline-block;position:relative;z-index:2;padding:7px 10px;border-radius:6px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);min-width:68px;max-width:108px}
@@ -73,6 +77,7 @@
   .o .nd{background:var(--onboard)}
   .a .nd{background:var(--active)}
   .l .nd{background:var(--leave)}
+  .t .nd{background:var(--trainee)}
 
   /* clickable node */
   .nd.nd-clk{cursor:pointer;padding-right:18px;transition:transform .12s,box-shadow .12s}
@@ -85,6 +90,7 @@
   .o .nd.ar-right::before{border-left-color:var(--onboard)}
   .a .nd.ar-right::before{border-left-color:var(--active)}
   .l .nd.ar-right::before{border-left-color:var(--leave)}
+  .t .nd.ar-right::before{border-left-color:var(--trainee)}
 
   /* ── left arrow ── */
   .nd.ar-left::after{content:'';position:absolute;left:-9px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-right-width:7px;z-index:3}
@@ -92,6 +98,7 @@
   .o .nd.ar-left::after{border-right-color:var(--onboard)}
   .a .nd.ar-left::after{border-right-color:var(--active)}
   .l .nd.ar-left::after{border-right-color:var(--leave)}
+  .t .nd.ar-left::after{border-right-color:var(--trainee)}
 
   /* ── stack ── */
   td.rl .nstack{display:flex;flex-direction:column;gap:4px;align-items:center}
@@ -104,6 +111,7 @@
   .o td.st .st-tag{border-color:var(--onboard-line);color:var(--onboard-text);background:var(--onboard-bg)}
   .a td.st .st-tag{border-color:var(--active-line);color:var(--active-text);background:var(--active-bg)}
   .l td.st .st-tag{border-color:var(--leave-line);color:var(--leave-text);background:var(--leave-bg)}
+  .t td.st .st-tag{border-color:var(--trainee-line);color:var(--trainee-text);background:var(--trainee-bg)}
   /* ── status flow arrow: attached to tag bottom ── */
   td.st.st-ctn .st-tag{position:relative}
   td.st.st-ctn .st-tag::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top:7px solid;border-bottom:0;z-index:5}
@@ -111,6 +119,7 @@
   .o td.st.st-ctn .st-tag::after{border-top-color:var(--onboard-line)}
   .a td.st.st-ctn .st-tag::after{border-top-color:var(--active-line)}
   .l td.st.st-ctn .st-tag::after{border-top-color:var(--leave-line)}
+  .t td.st.st-ctn .st-tag::after{border-top-color:var(--trainee-line)}
   td.st.st-shared .st-tag{border-style:solid}
 
   /* ── note ── */
@@ -143,7 +152,7 @@
   <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
     <div class="badge-row">
       <span class="badge r">招聘</span><span class="badge o">入职</span>
-      <span class="badge a">在职</span><span class="badge l">离职</span>
+      <span class="badge a">在职</span><span class="badge l">离职</span><span class="badge t">管培生</span>
     </div>
     <div class="legend">
       <span>━ 流程轨迹线</span><span>▸ 流转方向</span><span>⋯ 点击查看详情</span><span>▼ 流程推进</span>
@@ -396,6 +405,81 @@
   <td class="st"><span class="st-tag">交接完成<br>劳动关系终止</span></td>
 </tr>
 
+
+<!-- ═══════════ 五、管培生专项 rowspan=6 ═══════════ -->
+<tr class="t"><td class="lc t" rowspan="6"><span class="vtext">管培生专项</span></td>
+  <td class="fc"><span class="cat">管培生特招与伯乐机制</span>
+    <div class="sub">学历硬标准筛选 + 高管终面（热爱度/韧性打分）</div>
+    <div class="sub">伯乐备注：是否适用80%薪资考察期</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-recruit">HR学历筛选<small>院校层次判断</small></div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">高管终面<small>热爱度/韧性打分</small></div></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-bole">审核<small>伯乐机制备注</small></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-recruit-ceo">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">管培生录用审批通过</span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="cat">管培生入职专项</span>
+  <div class="sub">合同特殊条款：见习期/试用期工资=转正后80%</div>
+  <div class="sub">双轨制账号：国内（HKMS/钉钉）+ 北美（远程协作工具）</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起合同<small>80%薪资条款</small></div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">审核特殊条款</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd">分配宿舍<small>单人/双人间</small></div></td>
+  <td class="rl track"><div class="nd">开通双轨账号<small>国内+远程</small></div></td>
+  <td class="rl"></td><td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">管培生入职配置完成</span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="cat">月度KPI量化考核（120分制）</span>
+  <div class="sub">A/B/C/D 四级 → 对应晋升/续用/考察期/辞退</div>
+  <div class="sub">D级触发：当月工资按60%执行 → 连续3次D→解约</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-kpi-hr">发起考核</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-kpi-bu">评分A/B/C/D</div></td>
+  <td class="rl track"><div class="nd ar-right">审核评级</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-kpi-ceo">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">KPI评级完成<small>D级→触发薪资调整</small></span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="cat">专项软素质与协同考核</span>
+  <div class="sub">季度考核：抗压韧性、热爱投入、岗位融入度</div>
+  <div class="sub">黄金协同窗口：上海时间10:00—13:00 专项监控</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">监控协同窗口<small>10:00-13:00</small></div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-soft-bu">软素质评分<small>韧性/热爱/融入</small></div></td>
+  <td class="rl track"><div class="nd ar-right">审核</div></td>
+  <td class="rl track"><div class="nd">技术总监<small>项目双轨协同</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">季度考核完成</span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="cat">伯乐转正与晋升</span>
+  <div class="sub">1年期满评估：80%薪金→100%薪金 正式定岗</div>
+  <div class="sub">Band IV及以下空缺绝对优先面向管培生选聘</div></td>
+  <td class="rl"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-promote-hr">发起评估</div></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-promote-bu">综合评估<small>KPI+软素质</small></div></td>
+  <td class="rl track"><div class="nd ar-right">审核</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-promote-ceo">终审<small>定岗定薪</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st"><span class="st-tag">管培生正式定岗<small>Band IV优先</small></span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="cat">红线与淘汰机制</span>
+  <div class="sub">红线一票否决：旷工/考勤作弊/迟到早退累计→直接辞退</div>
+  <div class="sub">年度内第三次D级→协商解除（书面提醒→培训调岗→协商解除）</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-redline-hr">触发红线/淘汰</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">确认事实</div></td>
+  <td class="rl track"><div class="nd ar-right">审核</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-redline-ceo">终审<small>解除决定</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st"><span class="st-tag">触发解除/辞退</span></td>
+</tr>
 </tbody>
 </table>
 <div class="foot-note">
@@ -860,6 +944,148 @@ var DETAILS = {
         '确认离职交接和风险可控',
         '处理特殊情况或争议',
         '最终批准离职申请'
+      ]}
+    ]
+
+  // ── 管培生专项 ──
+  'appr-trainee-recruit': {
+    title: '管培生特招 — HR学历筛选',
+    groups: [
+      { form: null, points: [
+        '执行院校层次判断自律性的硬规定',
+        '过滤不符合学历硬标准的申请',
+        '确认候选人符合管培生专项招募条件',
+        '通过后推送至高管终面环节'
+      ]}
+    ]
+  },
+  'appr-trainee-bole': {
+    title: '管培生特招 — 人事负责人伯乐机制审核',
+    groups: [
+      { form: null, points: [
+        '审核高管终面中热爱度与韧性打分结果',
+        '确认是否适用伯乐机制（80%薪资考察期）',
+        '评估候选人发展潜力与岗位匹配度',
+        '备注伯乐考察期条款至录用审批单'
+      ]}
+    ]
+  },
+  'appr-trainee-recruit-ceo': {
+    title: '管培生特招 — 最高负责人终审',
+    groups: [
+      { form: null, points: [
+        '审批管培生录用决定（录用/放弃）',
+        '确认伯乐机制适用性（80%薪资考察）',
+        '审核特殊薪酬或岗位安排',
+        '最终批准或退回'
+      ]}
+    ]
+  },
+  'appr-trainee-kpi-hr': {
+    title: '月度KPI量化考核（120分制）— 人事专员发起',
+    groups: [
+      { form: null, points: [
+        '每月发起管培生KPI量化考核流程',
+        '分发考核表至各BU负责人评分',
+        '汇总评分结果并计算等级（A/B/C/D）',
+        'D级触发：通知薪资调整（当月工资按60%执行）',
+        '累计追踪：连续3次D级自动触发淘汰流程'
+      ]}
+    ]
+  },
+  'appr-trainee-kpi-bu': {
+    title: '月度KPI量化考核（120分制）— BU负责人评分',
+    groups: [
+      { form: null, points: [
+        '按120分制对管培生进行月度量化评分',
+        'A级（≥108分）：晋升候选池',
+        'B级（96-107分）：续用',
+        'C级（84-95分）：进入考察期',
+        'D级（<84分）：触发薪资调整（工资60%）及书面警告',
+        '连续三月D级建议协商解除'
+      ]}
+    ]
+  },
+  'appr-trainee-kpi-ceo': {
+    title: '月度KPI量化考核（120分制）— 最高负责人终审',
+    groups: [
+      { form: null, points: [
+        '终审月度KPI评级结果',
+        '审批D级人员的薪资调整方案（60%执行）',
+        '审批连续3次D级人员的淘汰决定',
+        '最终确认A级人员进入晋升候选池'
+      ]}
+    ]
+  },
+  'appr-trainee-soft-bu': {
+    title: '专项软素质考核 — BU负责人评分',
+    groups: [
+      { form: null, points: [
+        '每季度末对管培生进行软素质评分',
+        '抗压与韧性：评估面对困难时的坚持与适应能力',
+        '热爱与投入：评估对岗位和业务的热情与主动程度',
+        '岗位融入度：评估团队协作与文化融入表现',
+        '综合评分纳入管培生年度综合考评',
+        '该评分与带教负责人绩效考核挂钩'
+      ]}
+    ]
+  },
+  'appr-trainee-promote-hr': {
+    title: '伯乐转正与晋升 — 人事专员发起评估',
+    groups: [
+      { form: null, points: [
+        '管培生满1年后启动伯乐考察期满评估',
+        '汇总月度KPI评分及季度软素质考核结果',
+        '计算综合得分并提出转正建议（80%→100%薪金）',
+        '评估是否符合Band IV及以下晋升优先条件',
+        '发起综合评估流程至BU负责人及最高负责人'
+      ]}
+    ]
+  },
+  'appr-trainee-promote-bu': {
+    title: '伯乐转正与晋升 — BU负责人综合评估',
+    groups: [
+      { form: null, points: [
+        '综合评估管培生1年期内KPI与软素质表现',
+        '给出转正建议：80%→100%薪金 或 延长考察期',
+        '评估是否推荐晋升至Band IV岗位',
+        '确认定岗部门、职级与薪酬方案',
+        '不达标者按目标薪金80%录用再考察一年'
+      ]}
+    ]
+  },
+  'appr-trainee-promote-ceo': {
+    title: '伯乐转正与晋升 — 最高负责人终审',
+    groups: [
+      { form: null, points: [
+        '终审批复管培生转正定岗方案',
+        '审核薪金调整（80%→100%）的合理性',
+        '审批Band IV晋升提名',
+        '符合条件者正式定岗，不达标者延长考察或退出',
+        '最终批准或退回'
+      ]}
+    ]
+  },
+  'appr-trainee-redline-hr': {
+    title: '红线与淘汰机制 — 人事专员触发',
+    groups: [
+      { form: null, points: [
+        '红线一票否决（直接辞退）：旷工、考勤作弊、迟到早退累计超标',
+        '年度内累计第3次KPI评级D→触发协商解除流程',
+        '执行递进流程：书面提醒 → 培训调岗 → 协商解除',
+        '确认事实后发起淘汰审批至BU负责人及最高负责人',
+        '同步启动离职交接及薪资结算'
+      ]}
+    ]
+  },
+  'appr-trainee-redline-ceo': {
+    title: '红线与淘汰机制 — 最高负责人终审',
+    groups: [
+      { form: null, points: [
+        '审批红线违规人员的辞退决定',
+        '审批年度内第三次D级人员的协商解除',
+        '确认离职交接及风险可控',
+        '最终批准解除劳动合同'
       ]}
     ]
   },
