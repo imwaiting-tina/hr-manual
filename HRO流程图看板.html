@@ -11,6 +11,7 @@
     --onboard:      #9aaa95; --onboard-bg:  #f4f6f3; --onboard-line:  #cad4c7; --onboard-text: #637060;
     --active:       #b7a594; --active-bg:   #f7f5f2; --active-line:   #dbd2c9; --active-text: #7a6c5e;
     --leave:        #bea19d; --leave-bg:    #f8f4f4; --leave-line:    #dfcfcc; --leave-text: #806764;
+    --trainee:      #8d9aab; --trainee-bg:  #f4f5f7; --trainee-line:  #d0d6df; --trainee-text: #5a6370;
     --text:         #3d424a; --muted:#7b828e; --border:#e6e8ec; --white:#fff;
     --shadow:       0 1px 3px rgba(0,0,0,.03);
     --divider:      #eaecf0;
@@ -25,6 +26,7 @@
   .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;color:#fff}
   .badge.r{background:var(--recruit)} .badge.o{background:var(--onboard)}
   .badge.a{background:var(--active)}  .badge.l{background:var(--leave)}
+  .badge.t{background:var(--trainee)}
   .legend{display:flex;gap:12px;font-size:11px;color:var(--muted);align-items:center;flex-wrap:wrap}
 
   /* ── table wrapper ── */
@@ -47,6 +49,7 @@
   td.lc.o{background:var(--onboard-bg);color:var(--onboard-text);border-right-color:var(--onboard-line)}
   td.lc.a{background:var(--active-bg);color:var(--active-text);border-right-color:var(--active-line)}
   td.lc.l{background:var(--leave-bg);color:var(--leave-text);border-right-color:var(--leave-line)}
+  td.lc.t{background:var(--trainee-bg);color:var(--trainee-text);border-right-color:var(--trainee-line)}
   .vtext{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:3px}
 
   /* ── form cell ── */
@@ -64,6 +67,7 @@
   .o td.rl.track::before{background:var(--onboard-line)}
   .a td.rl.track::before{background:var(--active-line)}
   .l td.rl.track::before{background:var(--leave-line)}
+  .t td.rl.track::before{background:var(--trainee-line)}
 
   /* ── node box ── */
   .nd{display:inline-block;position:relative;z-index:2;padding:7px 10px;border-radius:6px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08);min-width:68px;max-width:108px}
@@ -73,6 +77,7 @@
   .o .nd{background:var(--onboard)}
   .a .nd{background:var(--active)}
   .l .nd{background:var(--leave)}
+  .t .nd{background:var(--trainee)}
 
   /* clickable node */
   .nd.nd-clk{cursor:pointer;padding-right:18px;transition:transform .12s,box-shadow .12s}
@@ -85,6 +90,7 @@
   .o .nd.ar-right::before{border-left-color:var(--onboard)}
   .a .nd.ar-right::before{border-left-color:var(--active)}
   .l .nd.ar-right::before{border-left-color:var(--leave)}
+  .t .nd.ar-right::before{border-left-color:var(--trainee)}
 
   /* ── left arrow ── */
   .nd.ar-left::after{content:'';position:absolute;left:-9px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-right-width:7px;z-index:3}
@@ -92,6 +98,7 @@
   .o .nd.ar-left::after{border-right-color:var(--onboard)}
   .a .nd.ar-left::after{border-right-color:var(--active)}
   .l .nd.ar-left::after{border-right-color:var(--leave)}
+  .t .nd.ar-left::after{border-right-color:var(--trainee)}
 
   /* ── stack ── */
   td.rl .nstack{display:flex;flex-direction:column;gap:4px;align-items:center}
@@ -104,6 +111,7 @@
   .o td.st .st-tag{border-color:var(--onboard-line);color:var(--onboard-text);background:var(--onboard-bg)}
   .a td.st .st-tag{border-color:var(--active-line);color:var(--active-text);background:var(--active-bg)}
   .l td.st .st-tag{border-color:var(--leave-line);color:var(--leave-text);background:var(--leave-bg)}
+  .t td.st .st-tag{border-color:var(--trainee-line);color:var(--trainee-text);background:var(--trainee-bg)}
   /* ── status flow arrow: attached to tag bottom ── */
   td.st.st-ctn .st-tag{position:relative}
   td.st.st-ctn .st-tag::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top:7px solid;border-bottom:0;z-index:5}
@@ -111,6 +119,7 @@
   .o td.st.st-ctn .st-tag::after{border-top-color:var(--onboard-line)}
   .a td.st.st-ctn .st-tag::after{border-top-color:var(--active-line)}
   .l td.st.st-ctn .st-tag::after{border-top-color:var(--leave-line)}
+  .t td.st.st-ctn .st-tag::after{border-top-color:var(--trainee-line)}
   td.st.st-shared .st-tag{border-style:solid}
 
   /* ── note ── */
@@ -143,7 +152,7 @@
   <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
     <div class="badge-row">
       <span class="badge r">招聘</span><span class="badge o">入职</span>
-      <span class="badge a">在职</span><span class="badge l">离职</span>
+      <span class="badge a">在职</span><span class="badge l">离职</span><span class="badge t">管培生</span>
     </div>
     <div class="legend">
       <span>━ 流程轨迹线</span><span>▸ 流转方向</span><span>⋯ 点击查看详情</span><span>▼ 流程推进</span>
@@ -396,6 +405,42 @@
   <td class="st"><span class="st-tag">交接完成<br>劳动关系终止</span></td>
 </tr>
 
+
+<!-- ═══════════ 五、管培生专项 rowspan=3 ═══════════ -->
+<tr class="t"><td class="lc t" rowspan="3"><span class="vtext">管培生专项</span></td>
+  <td class="fc"><span class="tag">HRT-2020</span><span class="cat">实习协议签署及用印</span>
+    <div class="sub">管培生入职专项（需最高负责人终审）</div></td>
+  <td class="rl track"><div class="nd ar-right">乙方签署</div></td>
+  <td class="rl track"><div class="nd ar-right">发起用印申请</div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">甲方签字<small>审核用印</small></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-agreement">终审</div></td>
+  <td class="rl track"></td><td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">执行盖章</div></td>
+  <td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">实习协议签署完成</span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="tag">HRP-2023</span><span class="cat">管培生评估转正</span>
+  <div class="sub">实习生评估表 + 劳动合同签署</div>
+  <div class="sub">（评估留用后转签劳动合同）</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd ar-right">发起评估<small>人事负责人考核</small></div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right">填写评估</div></td>
+  <td class="rl track"><div class="nd ar-right">审核</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-eval">终审</div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st st-ctn"><span class="st-tag">评估通过→签劳动合同</span></td>
+</tr>
+<tr class="t"><td class="fc"><span class="cat">校园菁英计划·三年培养</span>
+  <div class="sub">V1.1 适应期→成长期→独当一面</div>
+  <div class="sub">双轨制：学员3年管理 + 院校联动</div></td>
+  <td class="rl"></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-plan">项目工作组<small>管理团队统筹</small></div></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
+  <td class="st"><span class="st-tag">三年培养计划推进中</span></td>
+</tr>
 </tbody>
 </table>
 <div class="foot-note">
@@ -860,6 +905,43 @@ var DETAILS = {
         '确认离职交接和风险可控',
         '处理特殊情况或争议',
         '最终批准离职申请'
+      ]}
+    ]
+  },
+  // ── 管培生专项 ──
+  'appr-trainee-agreement': {
+    title: '管培生实习协议用印 — 最高负责人（终审）',
+    groups: [
+      { form: null, points: [
+        '确认管培生实习协议条款合规',
+        '审核实习报酬及福利方案',
+        '确认实习期限合理',
+        '审核用印申请材料完整',
+        '最终批准实习协议用印'
+      ]}
+    ]
+  },
+  'appr-trainee-eval': {
+    title: '管培生评估转正 — 最高负责人（终审）',
+    groups: [
+      { form: null, points: [
+        '审阅管培生实习期整体表现评价',
+        '确认评估结果（留用/放弃）',
+        '如留用，审核转签劳动合同方案',
+        '确认转正岗位、职级与薪酬',
+        '最终批准管培生转正'
+      ]}
+    ]
+  },
+  'appr-trainee-plan': {
+    title: '校园菁英计划·三年管培生融合方案 V1.1',
+    groups: [
+      { form: null, points: [
+        '适应期（第1年）：融入企业、了解业务、轮岗学习',
+        '成长期（第2年）：独立承担模块工作、深化专业能力',
+        '独当一面（第3年）：主导项目、输出业绩、晋升评估',
+        '双轨管理：学员3年管理 + 院校联动跟踪',
+        '管理团队 & 项目工作组统筹推进'
       ]}
     ]
   },
