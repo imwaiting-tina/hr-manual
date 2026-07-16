@@ -446,22 +446,21 @@
   <td class="st st-ctn"><span class="st-tag">KPI评级完成<small>D级→触发薪资调整</small></span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">专项软素质与协同考核</span>
-  <div class="sub">季度考核：抗压韧性、热爱投入、岗位融入度</div>
-  <div class="sub">黄金协同窗口：上海时间10:00—13:00 专项监控</div></td>
+  <div class="sub">季度考核：抗压韧性、热爱投入、岗位融入度</div></td>
   <td class="rl"></td>
-  <td class="rl track"><div class="nd ar-right">监控协同窗口<small>10:00-13:00</small></div></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-soft-hr">发起考核</div></td>
   <td class="rl track"></td>
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-soft-bu">软素质评分<small>韧性/热爱/融入</small></div></td>
   <td class="rl track"><div class="nd ar-right">审核</div></td>
-  <td class="rl track"><div class="nd">技术总监<small>项目双轨协同</small></div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-soft-ceo">终审<small>考核结果</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">季度考核完成</span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">伯乐转正与晋升</span>
   <div class="sub">1年期满评估：80%薪金→100%薪金 正式定岗</div>
   <div class="sub">Band IV及以下空缺绝对优先面向管培生选聘</div></td>
-  <td class="rl"></td><td class="rl track"></td>
-  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-promote-hr">发起评估</div></td>
+  <td class="rl"></td><td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-promote-hr">发起评估</div></td>
+  <td class="rl track"></td>
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-promote-bu">综合评估<small>KPI+软素质</small></div></td>
   <td class="rl track"><div class="nd ar-right">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-promote-ceo">终审<small>定岗定薪</small></div></td>
@@ -1015,6 +1014,29 @@ var DETAILS = {
         '审批D级人员的薪资调整方案（60%执行）',
         '审批连续3次D级人员的淘汰决定',
         '最终确认A级人员进入晋升候选池'
+      ]}
+    ]
+  },
+
+  'appr-trainee-soft-hr': {
+    title: '专项软素质考核 — 人事专员1发起考核',
+    groups: [
+      { form: null, points: [
+        '每季度末发起管培生软素质考核流程',
+        '分发考核表至各BU负责人进行评分',
+        '汇总BU负责人软素质评分结果',
+        '推送至人事负责人审核及最高负责人终审'
+      ]}
+    ]
+  },
+  'appr-trainee-soft-ceo': {
+    title: '专项软素质考核 — 最高负责人终审',
+    groups: [
+      { form: null, points: [
+        '终审管培生季度软素质考核结果',
+        '综合评估抗压韧性、热爱投入、岗位融入度',
+        '确认考核结果应用（薪资/晋升/淘汰参考）',
+        '最终批准或退回'
       ]}
     ]
   },
