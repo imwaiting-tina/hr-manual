@@ -31,11 +31,12 @@
 
   /* ── table wrapper ── */
   .wrap{overflow:auto;max-height:100vh;margin:0 16px;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,.05);background:#fff}
-  table{border-collapse:collapse;min-width:2080px;width:100%}
+  table{border-collapse:collapse;min-width:2190px;width:100%}
   col.col-lane{width:44px} col.col-form{width:210px}
   col.col-r1{width:110px} col.col-r2{width:130px} col.col-r3{width:110px}
   col.col-r4{width:120px} col.col-r5{width:115px} col.col-r6{width:115px}
   col.col-r7{width:110px} col.col-r8{width:110px} col.col-r9{width:110px} col.col-r10{width:110px}
+  col.col-r11{width:110px}
   col.col-st{width:128px}
 
   /* ── thead ── */
@@ -166,7 +167,7 @@
   <col class="col-r1"><col class="col-r2"><col class="col-r3">
   <col class="col-r4"><col class="col-r5"><col class="col-r6">
   <col class="col-r7"><col class="col-r8"><col class="col-r9"><col class="col-r10">
-  <col class="col-st">
+  <col class="col-r11"><col class="col-st">
 </colgroup>
 <thead>
 <tr>
@@ -174,7 +175,7 @@
   <th>求职者<br>/ 员工</th><th>人事专员1<br>人事服务</th><th>人事专员2<br>薪酬结算</th>
   <th>BU负责人</th><th>人事负责人</th><th>最高负责人</th>
   <th>物业行政</th><th>IT</th><th>用印人</th><th>财务</th>
-  <th>状态 / 里程碑</th>
+  <th>公寓</th><th>状态 / 里程碑</th>
 </tr>
 </thead>
 <tbody>
@@ -187,13 +188,13 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-hire-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-hire-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">聘用审批通过</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">聘用审批通过</span></td>
 </tr>
 <tr class="r"><td class="fc"><span class="tag">HRP-2020</span><span class="cat">求职申请表</span><div class="sub">P1 基础信息（一面前填写）</div></td>
   <td class="rl track"><div class="nd">填写P1</div></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">候选人信息收集完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">候选人信息收集完成</span></td>
 </tr>
 <tr class="r"><td class="fc"><span class="lv">Ⅰ职级的面试</span><div class="sub">P2 面试评估</div></td>
   <td class="rl"></td>
@@ -203,7 +204,7 @@
   <td class="rl track"><div class="nd ar-right">终面</div></td>
   <td class="rl track"><div class="nd">终面<small>选择"放弃/录用"</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn" rowspan="3"><span class="st-tag">面试评估完成</span></td>
+  <td class="rl"></td><td class="st st-ctn" rowspan="3"><span class="st-tag">面试评估完成</span></td>
 </tr>
 <tr class="r"><td class="fc"><span class="lv">Ⅱ职级的面试</span></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td>
@@ -229,14 +230,14 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-offer-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-offer-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">录用审批通过</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">录用审批通过</span></td>
 </tr>
 <tr class="r"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">录用通知书</span></td>
   <td class="rl track"><div class="nd">确认接受<small>Offer</small></div></td>
   <td class="rl track"><div class="nd ar-left">发送Offer<small>入职沟通后</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">候选人确认Offer → 进入入职</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">候选人确认Offer → 进入入职</span></td>
 </tr>
 
 <!-- ═══════════ 二、入职流程 rowspan=5 ═══════════ -->
@@ -252,14 +253,14 @@
   <td class="rl track"><div class="nd nd-clk" data-detail="guide-admin">安排工位·电脑<small>发放办公用品</small><em>开通门禁卡</em></div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="guide-it">开通企业邮箱<small>HKMS账户+权限</small></div></td>
   <td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">入职任务分配完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">入职任务分配完成</span></td>
 </tr>
 <tr class="o"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">员工信息登记表</span>
   <div class="sub">需提交归档材料（点击节点 ⋯ 查看清单）</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="info-reg">填写信息<small>+ 提交归档材料</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">员工档案建立</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">员工档案建立</span></td>
 </tr>
 <tr class="o"><td class="fc"><span class="cat">合同签署及用印</span>
   <div class="sub"><em>HRC-2024</em>劳动合同（全日制-标准工时）</div>
@@ -273,14 +274,14 @@
   <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
   <td class="rl track"><div class="nd ar-right">执行盖章</div></td>
   <td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">合同签署完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">合同签署完成</span></td>
 </tr>
 <tr class="o"><td class="fc" style="text-align:center;color:var(--muted);font-size:10px">↳ 归档</td>
   <td class="rl"></td>
   <td class="rl track"><div class="nd">文件归档</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">合同文件归档完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">合同文件归档完成</span></td>
 </tr>
 <tr class="o"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">培训签到表</span></td>
   <td class="rl track"><div class="nd ar-right">参训人签字</div></td>
@@ -288,7 +289,7 @@
   <td class="rl track"></td><td class="rl track"></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-train-hr">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">新员工培训完成</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">新员工培训完成</span></td>
 </tr>
 
 <!-- ═══════════ 三、在职管理 rowspan=8 ═══════════ -->
@@ -301,7 +302,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-eval-intern-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-eval-intern-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">实习转正完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">实习转正完成</span></td>
 </tr>
 <tr class="a"><td class="fc"><span class="tag">HRP-2020</span><span class="cat">新员工试用期评估表</span><div class="sub">转正流程</div></td>
   <td class="rl"></td>
@@ -311,7 +312,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-eval-prob-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-eval-prob-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">转正审批通过</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">转正审批通过</span></td>
 </tr>
 <tr class="a"><td class="fc"><span class="tag">HRP-2020</span><span class="cat">员工流动表</span><div class="sub">调动·晋升·调薪</div></td>
   <td class="rl"></td>
@@ -324,7 +325,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-flow-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-flow-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">流动审批通过</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">流动审批通过</span></td>
 </tr>
 <tr class="a"><td class="fc"><span class="cat">合同到期续签申请</span>
   <div class="sub"><em>HRP-2020</em>续签劳动合同申请表</div>
@@ -335,7 +336,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-renew-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-renew-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">续签审批通过</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">续签审批通过</span></td>
 </tr>
 <tr class="a"><td class="fc"><span class="cat">续签合同用印</span>
   <div class="sub"><em>HRC-2020</em>劳动合同续签书</div>
@@ -347,14 +348,14 @@
   <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
   <td class="rl track"><div class="nd ar-right">执行盖章</div></td>
   <td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">续签用印完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">续签用印完成</span></td>
 </tr>
 <tr class="a"><td class="fc" style="text-align:center;color:var(--muted);font-size:10px">↳ 归档</td>
   <td class="rl"></td>
   <td class="rl track"><div class="nd">文件归档</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">续签文件归档完成</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">续签文件归档完成</span></td>
 </tr>
 <tr class="a"><td class="fc"><span class="cat">员工福利工作</span>
   <div class="sub">点击节点 ⋯ 查看福利详情</div></td>
@@ -363,7 +364,7 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="rl"><div class="nstack"><div class="nd nd-clk" data-detail="welfare-admin">年度节日福利<small>员工生日福利</small></div></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">福利发放完成</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">福利发放完成</span></td>
 </tr>
 <tr class="a"><td class="fc"><span class="cat">薪资发放流程</span></td>
   <td class="rl"></td>
@@ -373,7 +374,7 @@
   <td class="rl track"><div class="nd ar-right">终审薪资表</div></td>
   <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
   <td class="rl track"><div class="nd">按时发放</div></td>
-  <td class="st"><span class="st-tag">薪资发放完成</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">薪资发放完成</span></td>
 </tr>
 
 <!-- ═══════════ 四、离职流程 rowspan=2 ═══════════ -->
@@ -386,7 +387,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-exit-hr">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-exit-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">离职审批通过</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">离职审批通过</span></td>
 </tr>
 <tr class="l"><td class="fc"><span class="tag">HRT-2020</span><span class="cat">职工离职交接清单</span>
   <div class="sub">点击各节点 ⋯ 查看完整交接事项</div></td>
@@ -402,7 +403,7 @@
   <td class="rl track"><div class="nd nd-clk" data-detail="exit-it">备份邮箱+注销<small>注销HKMS权限</small></div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="exit-seal">归还保管<small>授权印章</small></div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="exit-fin">应收应付结算<small>预借款结清</small><em>未报销单据</em></div></td>
-  <td class="st"><span class="st-tag">交接完成<br>劳动关系终止</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">交接完成<br>劳动关系终止</span></td>
 </tr>
 
 
@@ -418,7 +419,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-bole">审核<small>伯乐机制备注</small></div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-recruit-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">管培生录用审批通过</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">管培生录用审批通过</span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">管培生入职专项</span>
   <div class="sub">合同特殊条款：见习期/试用期工资=转正后80%</div>
@@ -428,10 +429,10 @@
   <td class="rl track"></td><td class="rl track"></td>
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-onboard-review">审核特殊条款</div></td>
   <td class="rl track"></td>
-  <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-onboard-admin">分配宿舍<small>单人/双人间</small></div></td>
+  <td class="rl track"></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-onboard-it">开通双轨账号<small>国内+远程</small></div></td>
   <td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">管培生入职配置完成</span></td>
+  <td class="rl"><div class="nd nd-clk" data-detail="appr-trainee-onboard-admin">分配宿舍<small>单人/双人间</small></div></td><td class="st st-ctn"><span class="st-tag">管培生入职配置完成</span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">月度KPI量化考核（120分制）</span>
   <div class="sub">A/B/C/D 四级 → 对应晋升/续用/考察期/辞退</div>
@@ -443,7 +444,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-kpi-review">审核评级</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-kpi-ceo">终审</div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">KPI评级完成<small>D级→触发薪资调整</small></span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">KPI评级完成<small>D级→触发薪资调整</small></span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">专项软素质与协同考核</span>
   <div class="sub">季度考核：抗压韧性、热爱投入、岗位融入度</div></td>
@@ -454,7 +455,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-soft-review">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-soft-ceo">终审<small>考核结果</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st st-ctn"><span class="st-tag">季度考核完成</span></td>
+  <td class="rl"></td><td class="st st-ctn"><span class="st-tag">季度考核完成</span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">伯乐转正与晋升</span>
   <div class="sub">1年期满评估：80%薪金→100%薪金 正式定岗</div>
@@ -465,7 +466,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-promote-review">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-promote-ceo">终审<small>定岗定薪</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">管培生正式定岗<small>Band IV优先</small></span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">管培生正式定岗<small>Band IV优先</small></span></td>
 </tr>
 <tr class="t"><td class="fc"><span class="cat">红线与淘汰机制</span>
   <div class="sub">红线一票否决：旷工/考勤作弊/迟到早退累计→直接辞退</div>
@@ -477,7 +478,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-trainee-redline-review">审核</div></td>
   <td class="rl track"><div class="nd nd-clk" data-detail="appr-trainee-redline-ceo">终审<small>解除决定</small></div></td>
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
-  <td class="st"><span class="st-tag">触发解除/辞退</span></td>
+  <td class="rl"></td><td class="st"><span class="st-tag">触发解除/辞退</span></td>
 </tr>
 </tbody>
 </table>
@@ -1147,7 +1148,7 @@ var DETAILS = {
     ]
   },
   'appr-trainee-onboard-admin': {
-    title: '管培生入职专项 — 物业行政分配宿舍',
+    title: '管培生入职专项 — 公寓分配宿舍',
     groups: [
       { form: null, points: [
         '根据候选人定级（核心人才/普通）分配宿舍',
