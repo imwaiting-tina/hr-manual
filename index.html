@@ -160,6 +160,10 @@
     </div>
   </div>
 </div>
+<div style="background:linear-gradient(90deg,#f0f4ff,#f8f6fa);border-bottom:1px solid var(--border);padding:7px 24px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <span style="font-size:14px">🤖</span>
+  <span><b style="color:var(--text)">AI 辅助说明</b>：涉及<b>三级审批</b>（BU负责人→人事负责人→最高负责人）的审核要点均有 <b style="color:#6b5bce">AI 辅助参考</b>，标注于弹窗中；其余节点弹窗内容根据实际情况设定。</span>
+</div>
 
 <table>
 <colgroup>
@@ -1250,7 +1254,7 @@ var modalBody = document.getElementById('modal-body');
 function openModal(key) {
   var d = DETAILS[key];
   if (!d) return;
-  modalTitle.textContent = d.title;
+  modalTitle.innerHTML = d.title + (key.indexOf('appr-')===0 ? ' <span style="font-size:10px;background:#6b5bce;color:#fff;padding:1px 6px;border-radius:99px;vertical-align:middle">🤖 AI辅助</span>' : '');
   var html = '';
   if (d.groups) {
     d.groups.forEach(function(g) {
