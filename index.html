@@ -381,7 +381,7 @@
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-salary-hr">审核</div></td>
   <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-salary-review">终审</div></td>
   <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
-  <td class="rl track"><div class="nd">发放工资</div></td>
+  <td class="rl track"><div class="nd nd-clk" data-detail="appr-salary-fin">发放工资</div></td>
   <td class="st"><span class="st-tag">薪资发放完成</span></td>
 </tr>
 
@@ -1217,6 +1217,19 @@ var DETAILS = {
         '确认社保公积金、个税、最低工资等合规项无遗漏',
         '终审通过后形成最终薪资汇总 PDF，交财务用于薪资出款核算',
         '留存终审记录，作为薪资发放与后续审计依据'
+      ]}
+    ]
+  },
+  'appr-salary-fin': {
+    title: '薪资核算与发放 — 财务审批工资请款',
+    groups: [
+      { form: null, points: [
+        '以最高负责人终审后的薪资汇总 PDF 为依据，核对请款金额与汇总表一致',
+        '审核工资请款流程完整：核算、人事负责人审核、最高负责人终审记录齐全',
+        '核对发放人数、实发金额、收款账户与银行代发清单一致',
+        '检查 PL 标记是否正确、完整，并与财务科目/成本归属口径一致',
+        '核对个税、社保公积金等代扣代缴项目是否已按规定处理',
+        '审批通过后按请款流程安排出款，留存薪资汇总 PDF 与请款凭证'
       ]}
     ]
   },
