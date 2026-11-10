@@ -157,7 +157,7 @@
     <div class="legend">
       <span>━ 流程轨迹线</span><span>▸ 流转方向</span><span>⋯ 点击查看详情</span><span>▼ 流程推进</span>
     </div>
-    <span style="font-size:10px;color:var(--muted);border-left:1px solid var(--border);padding-left:12px">人事部 · 黄燕婷 v2026.07.31</span>
+    <span style="font-size:10px;color:var(--muted);border-left:1px solid var(--border);padding-left:12px">人事部 · 黄燕婷 v2026.11.10</span>
   </div>
 </div>
 <div style="position:sticky;top:51px;left:0;z-index:49;background:linear-gradient(90deg,#f0f4ff,#f8f6fa);border-bottom:1px solid var(--border);padding:7px 24px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -372,13 +372,14 @@
   <td class="rl"></td><td class="rl"></td><td class="rl"></td><td class="rl"></td>
   <td class="st st-ctn"><span class="st-tag">考勤审批完成</span></td>
 </tr>
-<tr class="a"><td class="fc"><span class="cat">薪资核算与发放</span> <span style="font-size:9px;background:#fce4e4;color:#c94a4a;padding:2px 7px;border-radius:99px;vertical-align:middle;font-weight:600">待开发</span>
-  <div class="sub">依据考勤核算工资并发放</div></td>
+<tr class="a"><td class="fc"><span class="cat">薪资核算与发放</span>
+  <div class="sub">依据花名册、考勤、绩效核算工资并发放</div></td>
   <td class="rl"></td>
-  <td class="rl track"><div class="nd ar-right">核算工资</div></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-salary-calc">核算工资</div></td>
   <td class="rl track"></td>
-  <td class="rl track"></td><td class="rl track"></td>
-  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-salary-review">审核薪资</div></td>
+  <td class="rl track"></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-salary-hr">审核</div></td>
+  <td class="rl track"><div class="nd ar-right nd-clk" data-detail="appr-salary-review">终审</div></td>
   <td class="rl track"></td><td class="rl track"></td><td class="rl track"></td>
   <td class="rl track"><div class="nd">发放工资</div></td>
   <td class="st"><span class="st-tag">薪资发放完成</span></td>
@@ -1183,14 +1184,39 @@ var DETAILS = {
       ]}
     ]
   },
-  'appr-salary-review': {
-    title: '薪资核算与发放 — 最高负责人审核薪资',
+  'appr-salary-calc': {
+    title: '薪资核算与发放 — 人事专员1核算工资',
     groups: [
       { form: null, points: [
-        '审核月度薪资核算结果的准确性',
-        '确认考勤数据与薪资计算逻辑一致',
-        '审核薪酬调整、补贴、扣款等特殊项',
-        '批准薪资发放'
+        '以当月花名册为准，核对人员进出（入职、离职、调动、转正/续签）及计薪起止日期',
+        '核对考勤结果：出勤、请假、加班、缺卡、迟到早退、旷工等是否已按制度处理',
+        '核对绩效结果：绩效等级/系数、绩效工资、奖金、提成及扣款是否与评定结果一致',
+        '核对薪酬标准：基本工资、岗位工资、补贴、社保公积金、个税及其他增减项',
+        '生成薪资汇总 PDF，确保汇总数与明细一致后提交人事负责人审核'
+      ]}
+    ]
+  },
+  'appr-salary-hr': {
+    title: '薪资核算与发放 — 人事负责人审核',
+    groups: [
+      { form: null, points: [
+        '审核花名册口径：人员进出、部门/岗位变动、计薪天数及起止日期是否完整准确',
+        '审核考勤口径：异常考勤、加班、请假、缺卡及考勤扣款是否符合制度与审批结果',
+        '审核绩效口径：绩效结果、绩效工资/奖金/提成/扣款是否与绩效评定一致',
+        '审核薪资汇总：应发、代扣、实发及特殊调整项，关注环比异常波动',
+        '审核通过后将薪资汇总 PDF 提交最高负责人终审'
+      ]}
+    ]
+  },
+  'appr-salary-review': {
+    title: '薪资核算与发放 — 最高负责人终审',
+    groups: [
+      { form: null, points: [
+        '终审薪资汇总 PDF 的完整性与准确性，确认与花名册、考勤、绩效口径一致',
+        '审核薪资总额、环比波动、特殊调整及预算影响，确认异常项已说明',
+        '确认社保公积金、个税、最低工资等合规项无遗漏',
+        '终审通过后形成最终薪资汇总 PDF，交财务用于薪资出款核算',
+        '留存终审记录，作为薪资发放与后续审计依据'
       ]}
     ]
   },
